@@ -45,6 +45,10 @@
         {
           packages.default = hpkgs.ppad-sha256; # arbitrary
 
+          packages.ppad-sha256 = hpkgs.ppad-sha256;
+          packages.ppad-hmac-drbg = hpkgs.ppad-hmac-drbg;
+          packages.ppad-csecp256k1 = hpkgs.ppad-csecp256k1;
+
           devShells.default = hpkgs.shellFor {
             packages = p: [
               p.ppad-sha256
