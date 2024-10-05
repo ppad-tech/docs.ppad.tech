@@ -7,6 +7,11 @@
       url  = "git://git.ppad.tech/sha256.git";
       ref  = "master";
     };
+    ppad-sha512 = {
+      type = "git";
+      url  = "git://git.ppad.tech/sha512.git";
+      ref  = "master";
+    };
     ppad-hmac-drbg = {
       type = "git";
       url  = "git://git.ppad.tech/hmac-drbg.git";
@@ -22,18 +27,21 @@
   };
 
   outputs = { self, nixpkgs, flake-utils
-            , ppad-sha256, ppad-hmac-drbg, ppad-csecp256k1 }:
+            , ppad-sha256, ppad-sha512
+            , ppad-hmac-drbg, ppad-csecp256k1 }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
         hlib = pkgs.haskell.lib;
 
         sha256 = ppad-sha256.packages.${system}.default;
+        sha512 = ppad-sha512.packages.${system}.default;
         hmac-drbg = ppad-hmac-drbg.packages.${system}.default;
         csecp256k1 = ppad-csecp256k1.packages.${system}.default;
 
         hpkgs = pkgs.haskell.packages.ghc981.extend (new: old: {
           ppad-sha256 = sha256;
+          ppad-sha512 = sha512;
           ppad-hmac-drbg = hmac-drbg;
           ppad-csecp256k1 = csecp256k1;
         });
@@ -46,12 +54,14 @@
           packages.default = hpkgs.ppad-sha256; # arbitrary
 
           packages.ppad-sha256 = hpkgs.ppad-sha256;
+          packages.ppad-sha512 = hpkgs.ppad-sha512;
           packages.ppad-hmac-drbg = hpkgs.ppad-hmac-drbg;
           packages.ppad-csecp256k1 = hpkgs.ppad-csecp256k1;
 
           devShells.default = hpkgs.shellFor {
             packages = p: [
               p.ppad-sha256
+              p.ppad-sha512
               p.ppad-hmac-drbg
               p.ppad-csecp256k1
             ];
