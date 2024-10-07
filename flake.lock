@@ -72,6 +72,24 @@
         "type": "github"
       }
     },
+    "flake-utils_5": {
+      "inputs": {
+        "systems": "systems_5"
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1725910328,
@@ -136,6 +154,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1725910328,
+        "narHash": "sha256-n9pCtzGZ0httmTwMuEbi5E78UQ4ZbQMr1pzi5N0LAG8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5775c2583f1801df7b790bf7f7d710a19bac66f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "ppad-csecp256k1": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -168,14 +202,15 @@
           "ppad-sha256",
           "nixpkgs"
         ],
-        "ppad-sha256": "ppad-sha256"
+        "ppad-sha256": "ppad-sha256",
+        "ppad-sha512": "ppad-sha512"
       },
       "locked": {
-        "lastModified": 1728098329,
-        "narHash": "sha256-7QUzq/qvXeSK7z7azeggyUsCYZi6QdB1x1WcNXvN2L8=",
+        "lastModified": 1728279634,
+        "narHash": "sha256-zr3mxrhsZAV2D36L5anx9zhvx95Gnp6A9EvHNwzDYus=",
         "ref": "master",
-        "rev": "e19526abac03271536df74c965c21a89ef9a2927",
-        "revCount": 23,
+        "rev": "5bebdba96afdc43792978a7e9a9e74c7c6e27d75",
+        "revCount": 33,
         "type": "git",
         "url": "git://git.ppad.tech/hmac-drbg.git"
       },
@@ -207,15 +242,15 @@
     },
     "ppad-sha256_2": {
       "inputs": {
-        "flake-utils": "flake-utils_3",
-        "nixpkgs": "nixpkgs_3"
+        "flake-utils": "flake-utils_4",
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1728232650,
-        "narHash": "sha256-V2tSYnBkqFRpAzQOcnbyC7YUHNjlVYbzeNy1UGSf6u0=",
+        "lastModified": 1728278884,
+        "narHash": "sha256-Ucwhspn2fZVUhtg3bIo84E8jEYzrwnVEN181svQs8ts=",
         "ref": "master",
-        "rev": "ae9e0b6d12d89a0e12cba3fc9347a1b2e858874a",
-        "revCount": 74,
+        "rev": "422b52293ebf79f9d0ebf7e14a0bc7f9ade9e26e",
+        "revCount": 77,
         "type": "git",
         "url": "git://git.ppad.tech/sha256.git"
       },
@@ -227,15 +262,35 @@
     },
     "ppad-sha512": {
       "inputs": {
-        "flake-utils": "flake-utils_4",
-        "nixpkgs": "nixpkgs_4"
+        "flake-utils": "flake-utils_3",
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1728232902,
-        "narHash": "sha256-4J3ZdrCLuj7x5NHxEmrJLSfohb3KH5VoHCKwndYCv+k=",
+        "lastModified": 1728147405,
+        "narHash": "sha256-KQ56eDSkXNvy7VXPC2+L64b94nqYjxU0JkZxKFtIePA=",
         "ref": "master",
-        "rev": "b7fff78e638b0b09f5c2b02650047641bea91918",
-        "revCount": 9,
+        "rev": "c454a32a4a39b0e18601b8139a12ae895c9b631e",
+        "revCount": 8,
+        "type": "git",
+        "url": "git://git.ppad.tech/sha512.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/sha512.git"
+      }
+    },
+    "ppad-sha512_2": {
+      "inputs": {
+        "flake-utils": "flake-utils_5",
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1728279046,
+        "narHash": "sha256-+Lzml5OJXQ7adN0KmTD9RzqC+75jWWj25Pcbj4UDc3w=",
+        "ref": "master",
+        "rev": "bd549270cc85397e21e061609788c4f44d94c389",
+        "revCount": 12,
         "type": "git",
         "url": "git://git.ppad.tech/sha512.git"
       },
@@ -258,7 +313,7 @@
         "ppad-csecp256k1": "ppad-csecp256k1",
         "ppad-hmac-drbg": "ppad-hmac-drbg",
         "ppad-sha256": "ppad-sha256_2",
-        "ppad-sha512": "ppad-sha512"
+        "ppad-sha512": "ppad-sha512_2"
       }
     },
     "systems": {
@@ -307,6 +362,21 @@
       }
     },
     "systems_4": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_5": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
