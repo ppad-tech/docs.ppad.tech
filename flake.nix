@@ -1,3 +1,8 @@
+# XX generate an index according to the following
+#
+# https://haskell-haddock.readthedocs.io/latest/multi-components.html
+# https://github.com/coot/haddock-example
+
 {
   description = "docs.ppad.tech";
 
