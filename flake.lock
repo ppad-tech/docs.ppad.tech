@@ -274,15 +274,24 @@
     },
     "ppad-csecp256k1": {
       "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "flake-utils": [
+          "ppad-csecp256k1",
+          "ppad-sha256",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-csecp256k1",
+          "ppad-sha256",
+          "nixpkgs"
+        ],
+        "ppad-sha256": "ppad-sha256"
       },
       "locked": {
-        "lastModified": 1728051301,
-        "narHash": "sha256-4t7fYRBni5rwMK9TEBQHicxIxLrWCaoxG2RfVlruxe0=",
+        "lastModified": 1730983826,
+        "narHash": "sha256-y3QMUMXA2oFA6iGLQwOQ13Va0ee14Nvmh2mU8vt0EzQ=",
         "ref": "master",
-        "rev": "036b7c46909251e8348f6d7d50115f04e3f38e98",
-        "revCount": 71,
+        "rev": "efda90d7ddda365c9e2bda2ed1e9acc9265a4eaf",
+        "revCount": 82,
         "type": "git",
         "url": "git://git.ppad.tech/csecp256k1.git"
       },
@@ -304,15 +313,15 @@
           "ppad-sha256",
           "nixpkgs"
         ],
-        "ppad-sha256": "ppad-sha256",
+        "ppad-sha256": "ppad-sha256_2",
         "ppad-sha512": "ppad-sha512"
       },
       "locked": {
-        "lastModified": 1728574469,
-        "narHash": "sha256-IsKhzSp9QKPu7ISo7EotGMcsRb2TlBoKBlr47m1eRmA=",
+        "lastModified": 1729167144,
+        "narHash": "sha256-F0kPecN5h/PXrm/UyGCTGRqY16y8gtvCVpDd7E3YqtY=",
         "ref": "master",
-        "rev": "fc71ab3c2f1bd769b032528475727edf0adcb835",
-        "revCount": 39,
+        "rev": "0de8830e73a398447af4cc76873fdcac7b82561b",
+        "revCount": 41,
         "type": "git",
         "url": "git://git.ppad.tech/hmac-drbg.git"
       },
@@ -336,7 +345,7 @@
           "ppad-sha256",
           "nixpkgs"
         ],
-        "ppad-sha256": "ppad-sha256_2",
+        "ppad-sha256": "ppad-sha256_3",
         "ppad-sha512": "ppad-sha512_2"
       },
       "locked": {
@@ -367,14 +376,14 @@
           "nixpkgs"
         ],
         "ppad-hmac-drbg": "ppad-hmac-drbg_2",
-        "ppad-sha256": "ppad-sha256_3"
+        "ppad-sha256": "ppad-sha256_4"
       },
       "locked": {
-        "lastModified": 1729349109,
-        "narHash": "sha256-mosHYKM9iWTQ8vsz/z2zNuhweW8h8Yw7PYk4F/N3/uI=",
+        "lastModified": 1731071115,
+        "narHash": "sha256-C2TCPsGBT8lXsbhJK9bLJZ9nvoGYbgsNGYB/Zvtf7AM=",
         "ref": "master",
-        "rev": "bd7872118b13e76833830ec3e3fee7fa2a411d71",
-        "revCount": 103,
+        "rev": "74ca5e3e78c330755c68097f9abfdec5ab6d82f7",
+        "revCount": 118,
         "type": "git",
         "url": "git://git.ppad.tech/secp256k1.git"
       },
@@ -385,6 +394,26 @@
       }
     },
     "ppad-sha256": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1728824578,
+        "narHash": "sha256-sMZLvmbl3fBUHpBePzGuLdUyUALba/P5DCgKVgqEH1k=",
+        "ref": "master",
+        "rev": "3cc6c146ae36f67d73c6c207486a199dbc77658e",
+        "revCount": 82,
+        "type": "git",
+        "url": "git://git.ppad.tech/sha256.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/sha256.git"
+      }
+    },
+    "ppad-sha256_2": {
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs_2"
@@ -404,7 +433,7 @@
         "url": "git://git.ppad.tech/sha256.git"
       }
     },
-    "ppad-sha256_2": {
+    "ppad-sha256_3": {
       "inputs": {
         "flake-utils": "flake-utils_4",
         "nixpkgs": "nixpkgs_4"
@@ -424,7 +453,7 @@
         "url": "git://git.ppad.tech/sha256.git"
       }
     },
-    "ppad-sha256_3": {
+    "ppad-sha256_4": {
       "inputs": {
         "flake-utils": "flake-utils_6",
         "nixpkgs": "nixpkgs_6"
@@ -444,7 +473,7 @@
         "url": "git://git.ppad.tech/sha256.git"
       }
     },
-    "ppad-sha256_4": {
+    "ppad-sha256_5": {
       "inputs": {
         "flake-utils": "flake-utils_7",
         "nixpkgs": "nixpkgs_7"
@@ -537,7 +566,7 @@
         "ppad-csecp256k1": "ppad-csecp256k1",
         "ppad-hmac-drbg": "ppad-hmac-drbg",
         "ppad-secp256k1": "ppad-secp256k1",
-        "ppad-sha256": "ppad-sha256_4",
+        "ppad-sha256": "ppad-sha256_5",
         "ppad-sha512": "ppad-sha512_3"
       }
     },
