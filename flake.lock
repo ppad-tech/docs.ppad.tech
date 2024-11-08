@@ -379,11 +379,11 @@
         "ppad-sha256": "ppad-sha256_4"
       },
       "locked": {
-        "lastModified": 1731071115,
-        "narHash": "sha256-C2TCPsGBT8lXsbhJK9bLJZ9nvoGYbgsNGYB/Zvtf7AM=",
+        "lastModified": 1731071786,
+        "narHash": "sha256-CbYFlpRp7oDcd/Ytj9SA7zwShkJpOW9StOwtAqHUuQk=",
         "ref": "master",
-        "rev": "74ca5e3e78c330755c68097f9abfdec5ab6d82f7",
-        "revCount": 118,
+        "rev": "ac4d52bd29580f69d808490d88d4f99b104164de",
+        "revCount": 119,
         "type": "git",
         "url": "git://git.ppad.tech/secp256k1.git"
       },
