@@ -409,11 +409,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1736117180,
-        "narHash": "sha256-EJXcROeCTAtOTV+wAWT/nTIiVuCfxNFpDqWRMNFRMXA=",
+        "lastModified": 1736264470,
+        "narHash": "sha256-zo5l9DjZ68k+sN/zoEbuvGzCqBnj6Av2yFjhKk0125c=",
         "ref": "master",
-        "rev": "29a151d14f42b71b0bf8d6cd38ccf222bce5e7a8",
-        "revCount": 56,
+        "rev": "7b23d36477fcc438f4087db5bc994eac5bdc66d2",
+        "revCount": 58,
         "type": "git",
         "url": "git://git.ppad.tech/bech32.git"
       },
