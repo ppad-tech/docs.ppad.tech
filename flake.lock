@@ -536,11 +536,11 @@
         "ppad-sha512": "ppad-sha512"
       },
       "locked": {
-        "lastModified": 1736507894,
-        "narHash": "sha256-2pgL1QkFwuUBomuRFLw5pORWYXDfr2D9XluAemWlhbE=",
+        "lastModified": 1736519404,
+        "narHash": "sha256-I+I3DZrwZxlZbg52NuFEbRuJhefqpeBwh3oLyD9pPtg=",
         "ref": "master",
-        "rev": "65329cbaa7f4feffab5f0090a58ac978681698e4",
-        "revCount": 8,
+        "rev": "ad783e1fedb72818e5651cfe90cf8cdbb9148e68",
+        "revCount": 11,
         "type": "git",
         "url": "git://git.ppad.tech/hkdf.git"
       },
