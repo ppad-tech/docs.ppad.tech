@@ -27,6 +27,11 @@
       url  = "git://git.ppad.tech/bech32.git";
       ref  = "master";
     };
+    ppad-base16 = {
+      type = "git";
+      url  = "git://git.ppad.tech/base16.git";
+      ref  = "master";
+    };
     ppad-base58 = {
       type = "git";
       url  = "git://git.ppad.tech/base58.git";
@@ -58,7 +63,7 @@
 
   outputs = { self, nixpkgs, flake-utils
             , ppad-sha256, ppad-sha512, ppad-ripemd160
-            , ppad-bech32, ppad-base58
+            , ppad-bech32, ppad-base58, ppad-base16
             , ppad-hmac-drbg, ppad-hkdf
             , ppad-csecp256k1, ppad-secp256k1 }:
     flake-utils.lib.eachDefaultSystem (system:
@@ -69,6 +74,7 @@
         sha256 = ppad-sha256.packages.${system}.default;
         sha512 = ppad-sha512.packages.${system}.default;
         base58 = ppad-base58.packages.${system}.default;
+        base16 = ppad-base16.packages.${system}.default;
         bech32 = ppad-bech32.packages.${system}.default;
         ripemd160 = ppad-ripemd160.packages.${system}.default;
         hmac-drbg = ppad-hmac-drbg.packages.${system}.default;
@@ -80,6 +86,7 @@
           ppad-sha256 = sha256;
           ppad-sha512 = sha512;
           ppad-base58 = base58;
+          ppad-base16 = base16;
           ppad-bech32 = bech32;
           ppad-ripemd160 = ripemd160;
           ppad-hmac-drbg = hmac-drbg;
@@ -98,6 +105,7 @@
           packages.ppad-sha256 = hpkgs.ppad-sha256;
           packages.ppad-sha512 = hpkgs.ppad-sha512;
           packages.ppad-base58 = hpkgs.ppad-base58;
+          packages.ppad-base16 = hpkgs.ppad-base16;
           packages.ppad-bech32 = hpkgs.ppad-bech32;
           packages.ppad-ripemd160 = hpkgs.ppad-ripemd160;
           packages.ppad-hmac-drbg = hpkgs.ppad-hmac-drbg;
@@ -110,6 +118,7 @@
               p.ppad-sha256
               p.ppad-sha512
               p.ppad-base58
+              p.ppad-base16
               p.ppad-bech32
               p.ppad-ripemd160
               p.ppad-hmac-drbg
