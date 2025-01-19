@@ -7,6 +7,11 @@
   description = "docs.ppad.tech";
 
   inputs = {
+    ppad-nixpkgs = {
+      type = "git";
+      url  = "git://git.ppad.tech/nixpkgs.git";
+      ref  = "master";
+    };
     ppad-sha256 = {
       type = "git";
       url  = "git://git.ppad.tech/sha256.git";
@@ -57,11 +62,11 @@
       url  = "git://git.ppad.tech/secp256k1.git";
       ref  = "master";
     };
-    flake-utils.follows = "ppad-sha256/flake-utils";
-    nixpkgs.follows = "ppad-sha256/nixpkgs";
+    flake-utils.follows = "ppad-nixpkgs/flake-utils";
+    nixpkgs.follows = "ppad-nixpkgs/nixpkgs";
   };
 
-  outputs = { self, nixpkgs, flake-utils
+  outputs = { self, nixpkgs, flake-utils, ppad-nixpkgs
             , ppad-sha256, ppad-sha512, ppad-ripemd160
             , ppad-bech32, ppad-base58, ppad-base16
             , ppad-hmac-drbg, ppad-hkdf
