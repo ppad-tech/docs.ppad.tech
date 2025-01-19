@@ -85,7 +85,6 @@
       url  = "git://git.ppad.tech/script.git";
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
-      inputs.ppad-sha256.follows = "ppad-sha256";
       inputs.ppad-base16.follows = "ppad-base16";
     };
     flake-utils.follows = "ppad-nixpkgs/flake-utils";
