@@ -16,51 +16,77 @@
       type = "git";
       url  = "git://git.ppad.tech/sha256.git";
       ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
     };
     ppad-sha512 = {
       type = "git";
       url  = "git://git.ppad.tech/sha512.git";
       ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
     };
     ppad-ripemd160 = {
       type = "git";
       url  = "git://git.ppad.tech/ripemd160.git";
       ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
     };
     ppad-bech32 = {
       type = "git";
       url  = "git://git.ppad.tech/bech32.git";
       ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
     };
     ppad-base16 = {
       type = "git";
       url  = "git://git.ppad.tech/base16.git";
       ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
     };
     ppad-base58 = {
       type = "git";
       url  = "git://git.ppad.tech/base58.git";
       ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-sha256.follows = "ppad-sha256";
     };
     ppad-hmac-drbg = {
       type = "git";
       url  = "git://git.ppad.tech/hmac-drbg.git";
       ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-sha256.follows = "ppad-sha256";
+      inputs.ppad-sha512.follows = "ppad-sha512";
     };
     ppad-hkdf = {
       type = "git";
       url  = "git://git.ppad.tech/hkdf.git";
       ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-sha256.follows = "ppad-sha256";
+      inputs.ppad-sha512.follows = "ppad-sha512";
     };
     ppad-csecp256k1 = {
       type = "git";
       url  = "git://git.ppad.tech/csecp256k1.git";
       ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-sha256.follows = "ppad-sha256";
     };
     ppad-secp256k1 = {
       type = "git";
       url  = "git://git.ppad.tech/secp256k1.git";
       ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-sha256.follows = "ppad-sha256";
+      inputs.ppad-hmac-drbg.follows = "ppad-hmac-drbg";
+    };
+    ppad-script = {
+      type = "git";
+      url  = "git://git.ppad.tech/script.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-sha256.follows = "ppad-sha256";
+      inputs.ppad-base16.follows = "ppad-base16";
     };
     flake-utils.follows = "ppad-nixpkgs/flake-utils";
     nixpkgs.follows = "ppad-nixpkgs/nixpkgs";
@@ -70,7 +96,9 @@
             , ppad-sha256, ppad-sha512, ppad-ripemd160
             , ppad-bech32, ppad-base58, ppad-base16
             , ppad-hmac-drbg, ppad-hkdf
-            , ppad-csecp256k1, ppad-secp256k1 }:
+            , ppad-csecp256k1, ppad-secp256k1
+            , ppad-script
+            }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
@@ -86,6 +114,7 @@
         hkdf = ppad-hkdf.packages.${system}.default;
         csecp256k1 = ppad-csecp256k1.packages.${system}.default;
         secp256k1 = ppad-secp256k1.packages.${system}.default;
+        script = ppad-script.packages.${system}.default;
 
         hpkgs = pkgs.haskell.packages.ghc981.extend (new: old: {
           ppad-sha256 = sha256;
@@ -98,6 +127,7 @@
           ppad-hkdf = hkdf;
           ppad-csecp256k1 = csecp256k1;
           ppad-secp256k1 = secp256k1;
+          ppad-script = script;
         });
 
         cc    = pkgs.stdenv.cc;
@@ -117,6 +147,7 @@
           packages.ppad-hkdf = hpkgs.ppad-hkdf;
           packages.ppad-csecp256k1 = hpkgs.ppad-csecp256k1;
           packages.ppad-secp256k1 = hpkgs.ppad-secp256k1;
+          packages.ppad-script = hpkgs.ppad-script;
 
           devShells.default = hpkgs.shellFor {
             packages = p: [
@@ -130,6 +161,7 @@
               p.ppad-hkdf
               p.ppad-csecp256k1
               p.ppad-secp256k1
+              p.ppad-script
             ];
 
             buildInputs = [
