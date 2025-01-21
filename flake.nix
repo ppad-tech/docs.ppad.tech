@@ -78,6 +78,7 @@
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
       inputs.ppad-sha256.follows = "ppad-sha256";
+      inputs.ppad-sha512.follows = "ppad-sha512";
       inputs.ppad-hmac-drbg.follows = "ppad-hmac-drbg";
     };
     ppad-script = {
