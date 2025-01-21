@@ -104,79 +104,69 @@
         pkgs = import nixpkgs { inherit system; };
         hlib = pkgs.haskell.lib;
 
-        sha256 = ppad-sha256.packages.${system}.default;
-        sha512 = ppad-sha512.packages.${system}.default;
-        base58 = ppad-base58.packages.${system}.default;
-        base16 = ppad-base16.packages.${system}.default;
-        bech32 = ppad-bech32.packages.${system}.default;
-        ripemd160 = ppad-ripemd160.packages.${system}.default;
-        hmac-drbg = ppad-hmac-drbg.packages.${system}.default;
-        hkdf = ppad-hkdf.packages.${system}.default;
-        csecp256k1 = ppad-csecp256k1.packages.${system}.default;
-        secp256k1 = ppad-secp256k1.packages.${system}.default;
-        script = ppad-script.packages.${system}.default;
-
         hpkgs = pkgs.haskell.packages.ghc981.extend (new: old: {
-          ppad-sha256 = sha256;
-          ppad-sha512 = sha512;
-          ppad-base58 = base58;
-          ppad-base16 = base16;
-          ppad-bech32 = bech32;
-          ppad-ripemd160 = ripemd160;
-          ppad-hmac-drbg = hmac-drbg;
-          ppad-hkdf = hkdf;
-          ppad-csecp256k1 = csecp256k1;
-          ppad-secp256k1 = secp256k1;
-          ppad-script = script;
+          ppad-sha256 = ppad-sha256.packages.${system}.default;
+          ppad-sha512 = ppad-sha512.packages.${system}.default;
+          ppad-base58 = ppad-base58.packages.${system}.default;
+          ppad-base16 = ppad-base16.packages.${system}.default;
+          ppad-bech32 = ppad-bech32.packages.${system}.default;
+          ppad-ripemd160 = ppad-ripemd160.packages.${system}.default;
+          ppad-hmac-drbg = ppad-hmac-drbg.packages.${system}.default;
+          ppad-hkdf = ppad-hkdf.packages.${system}.default;
+          ppad-csecp256k1 = ppad-csecp256k1.packages.${system}.default;
+          ppad-secp256k1 = ppad-secp256k1.packages.${system}.default;
+          ppad-script = ppad-script.packages.${system}.default;
         });
 
-        cc    = pkgs.stdenv.cc;
-        ghc   = hpkgs.ghc;
-        cabal = hpkgs.cabal-install;
+        docpath = name:
+          let doc = hpkgs.${name}.doc;
+          in  "${doc}/share/doc/${name}-${hpkgs.${name}.version}/html";
+
+        docs = pkgs.linkFarm "docs.ppad.tech" [
+            { name = "sha256"; path = docpath "ppad-sha256"; }
+            { name = "sha512"; path = docpath "ppad-sha512"; }
+            { name = "base58"; path = docpath "ppad-base58"; }
+            { name = "base16"; path = docpath "ppad-base16"; }
+            { name = "bech32"; path = docpath "ppad-bech32"; }
+            { name = "ripemd160"; path = docpath "ppad-ripemd160"; }
+            { name = "hmac-drbg"; path = docpath "ppad-hmac-drbg"; }
+            { name = "hkdf"; path = docpath "ppad-hkdf"; }
+            { name = "csecp256k1"; path = docpath "ppad-csecp256k1"; }
+            { name = "secp256k1"; path = docpath "ppad-secp256k1"; }
+            { name = "script"; path = docpath "ppad-script"; }
+          ];
+
       in
         {
-          packages.default = hpkgs.ppad-sha256; # arbitrary
+          packages.default = pkgs.stdenv.mkDerivation {
+            name = "docs.ppad.tech";
+            src = docs;
+            buildInputs = [ hpkgs.cabal-install hpkgs.ghc pkgs.gnused ];
 
-          packages.ppad-sha256 = hpkgs.ppad-sha256;
-          packages.ppad-sha512 = hpkgs.ppad-sha512;
-          packages.ppad-base58 = hpkgs.ppad-base58;
-          packages.ppad-base16 = hpkgs.ppad-base16;
-          packages.ppad-bech32 = hpkgs.ppad-bech32;
-          packages.ppad-ripemd160 = hpkgs.ppad-ripemd160;
-          packages.ppad-hmac-drbg = hpkgs.ppad-hmac-drbg;
-          packages.ppad-hkdf = hpkgs.ppad-hkdf;
-          packages.ppad-csecp256k1 = hpkgs.ppad-csecp256k1;
-          packages.ppad-secp256k1 = hpkgs.ppad-secp256k1;
-          packages.ppad-script = hpkgs.ppad-script;
+            # put ghc in here too
+            buildPhase = ''
+              mkdir -p $out
+              for d in $(ls $src); do
+                cp -rL $d $out/
+              done
 
-          devShells.default = hpkgs.shellFor {
-            packages = p: [
-              p.ppad-sha256
-              p.ppad-sha512
-              p.ppad-base58
-              p.ppad-base16
-              p.ppad-bech32
-              p.ppad-ripemd160
-              p.ppad-hmac-drbg
-              p.ppad-hkdf
-              p.ppad-csecp256k1
-              p.ppad-secp256k1
-              p.ppad-script
-            ];
+              haddock -o "$out" --quickjump --gen-index --gen-contents \
+                --read-interface=ppad-sha256,$src/sha256/ppad-sha256.haddock \
+                --read-interface=ppad-sha512,$src/sha512/ppad-sha512.haddock \
+                --read-interface=ppad-ripemd160,$src/ripemd160/ppad-ripemd160.haddock \
+                --read-interface=ppad-hmac-drbg,$src/hmac-drbg/ppad-hmac-drbg.haddock \
+                --read-interface=ppad-csecp256k1,$src/csecp256k1/ppad-csecp256k1.haddock \
+                --read-interface=ppad-secp256k1,$src/secp256k1/ppad-secp256k1.haddock \
+                --read-interface=ppad-bech32,$src/bech32/ppad-bech32.haddock \
+                --read-interface=ppad-base58,$src/base58/ppad-base58.haddock \
+                --read-interface=ppad-base16,$src/base16/ppad-base16.haddock \
+                --read-interface=ppad-hkdf,$src/hkdf/ppad-hkdf.haddock \
+                --read-interface=ppad-script,$src/base16/ppad-script.haddock
+            '';
 
-            buildInputs = [
-              cabal
-              cc
-            ];
-
-            inputsFrom = builtins.attrValues self.packages.${system};
-
-            shellHook = ''
-              PS1="[docs.ppad.tech] \w$ "
-              echo "entering ${system} shell, using"
-              echo "cc:    $(${cc}/bin/cc --version)"
-              echo "ghc:   $(${ghc}/bin/ghc --version)"
-              echo "cabal: $(${cabal}/bin/cabal --version)"
+            fixupPhase = ''
+              sed -i 's/href="ppad\-/href="/g' $out/index.html
+              sed -i 's/href="ppad\-/href="/g' $out/doc-index.html
             '';
           };
         }
