@@ -1,8 +1,3 @@
-# XX generate an index according to the following
-#
-# https://haskell-haddock.readthedocs.io/latest/multi-components.html
-# https://github.com/coot/haddock-example
-
 {
   description = "docs.ppad.tech";
 
@@ -143,7 +138,6 @@
             src = docs;
             buildInputs = [ hpkgs.cabal-install hpkgs.ghc pkgs.gnused ];
 
-            # put ghc in here too
             buildPhase = ''
               mkdir -p $out
               for d in $(ls $src); do
