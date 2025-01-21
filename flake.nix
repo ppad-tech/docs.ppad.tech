@@ -150,6 +150,8 @@
                 cp -rL $d $out/
               done
 
+              cp -r ${hpkgs.ghc.doc} $out
+
               haddock -o "$out" --quickjump --gen-index --gen-contents \
                 --read-interface=ppad-sha256,$src/sha256/ppad-sha256.haddock \
                 --read-interface=ppad-sha512,$src/sha512/ppad-sha512.haddock \
@@ -161,7 +163,7 @@
                 --read-interface=ppad-base58,$src/base58/ppad-base58.haddock \
                 --read-interface=ppad-base16,$src/base16/ppad-base16.haddock \
                 --read-interface=ppad-hkdf,$src/hkdf/ppad-hkdf.haddock \
-                --read-interface=ppad-script,$src/base16/ppad-script.haddock
+                --read-interface=ppad-script,$src/script/ppad-script.haddock
             '';
 
             fixupPhase = ''
