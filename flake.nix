@@ -76,6 +76,18 @@
       inputs.ppad-sha512.follows = "ppad-sha512";
       inputs.ppad-hmac-drbg.follows = "ppad-hmac-drbg";
     };
+    ppad-bip32 = {
+      type = "git";
+      url  = "git://git.ppad.tech/bip32.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
+      inputs.ppad-base58.follows = "ppad-base58";
+      inputs.ppad-ripemd160.follows = "ppad-ripemd160";
+      inputs.ppad-secp256k1.follows = "ppad-secp256k1";
+      inputs.ppad-sha256.follows = "ppad-sha256";
+      inputs.ppad-sha512.follows = "ppad-sha512";
+    };
     ppad-script = {
       type = "git";
       url  = "git://git.ppad.tech/script.git";
@@ -92,7 +104,7 @@
             , ppad-bech32, ppad-base58, ppad-base16
             , ppad-hmac-drbg, ppad-hkdf
             , ppad-csecp256k1, ppad-secp256k1
-            , ppad-script
+            , ppad-script, ppad-bip32
             }:
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -111,6 +123,7 @@
           ppad-csecp256k1 = ppad-csecp256k1.packages.${system}.default;
           ppad-secp256k1 = ppad-secp256k1.packages.${system}.default;
           ppad-script = ppad-script.packages.${system}.default;
+          ppad-bip32 = ppad-bip32.packages.${system}.default;
         });
 
         docpath = name:
@@ -129,6 +142,7 @@
             { name = "csecp256k1"; path = docpath "ppad-csecp256k1"; }
             { name = "secp256k1"; path = docpath "ppad-secp256k1"; }
             { name = "script"; path = docpath "ppad-script"; }
+            { name = "bip32"; path = docpath "ppad-bip32"; }
           ];
 
       in
@@ -157,7 +171,8 @@
                 --read-interface=ppad-base58,$src/base58/ppad-base58.haddock \
                 --read-interface=ppad-base16,$src/base16/ppad-base16.haddock \
                 --read-interface=ppad-hkdf,$src/hkdf/ppad-hkdf.haddock \
-                --read-interface=ppad-script,$src/script/ppad-script.haddock
+                --read-interface=ppad-script,$src/script/ppad-script.haddock \
+                --read-interface=ppad-bip32,$src/bip32/ppad-bip32.haddock
             '';
 
             fixupPhase = ''
