@@ -365,11 +365,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740383080,
-        "narHash": "sha256-bm3V+iozpqzr0yMO9cp7Iyc/8LO50j9y3sxiXkBJJtc=",
+        "lastModified": 1740385647,
+        "narHash": "sha256-ECCWrVxDmCVGXbBRwDSSH3PAvwQolCtx4ZdfhRZz9pI=",
         "ref": "master",
-        "rev": "7861ae1261eceb03e766fc2f9d5839c2afc5a6bf",
-        "revCount": 9,
+        "rev": "15a7fe19cf9759d28e401debfe138a42525e0be9",
+        "revCount": 11,
         "type": "git",
         "url": "git://git.ppad.tech/pbkdf.git"
       },
