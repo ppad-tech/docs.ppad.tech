@@ -65,6 +65,40 @@
         "url": "git://git.ppad.tech/base16.git"
       }
     },
+    "ppad-base16_2": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-pbkdf",
+          "ppad-base16",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-pbkdf",
+          "ppad-base16",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-pbkdf",
+          "ppad-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1739979569,
+        "narHash": "sha256-omEcmgzRlzIE5Vdty0/SskEcR2f7OtcHzGFE4i1dI60=",
+        "ref": "master",
+        "rev": "4439e0efafbb5185bd7d9bfb352a17c2a31b96b4",
+        "revCount": 15,
+        "type": "git",
+        "url": "git://git.ppad.tech/base16.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/base16.git"
+      }
+    },
     "ppad-base58": {
       "inputs": {
         "flake-utils": [
@@ -307,6 +341,44 @@
         "url": "git://git.ppad.tech/nixpkgs.git"
       }
     },
+    "ppad-pbkdf": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-pbkdf",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-pbkdf",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-base16": "ppad-base16_2",
+        "ppad-nixpkgs": [
+          "ppad-nixpkgs"
+        ],
+        "ppad-sha256": [
+          "ppad-sha256"
+        ],
+        "ppad-sha512": [
+          "ppad-sha512"
+        ]
+      },
+      "locked": {
+        "lastModified": 1740383080,
+        "narHash": "sha256-bm3V+iozpqzr0yMO9cp7Iyc/8LO50j9y3sxiXkBJJtc=",
+        "ref": "master",
+        "rev": "7861ae1261eceb03e766fc2f9d5839c2afc5a6bf",
+        "revCount": 9,
+        "type": "git",
+        "url": "git://git.ppad.tech/pbkdf.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/pbkdf.git"
+      }
+    },
     "ppad-ripemd160": {
       "inputs": {
         "flake-utils": [
@@ -492,6 +564,7 @@
         "ppad-hkdf": "ppad-hkdf",
         "ppad-hmac-drbg": "ppad-hmac-drbg",
         "ppad-nixpkgs": "ppad-nixpkgs",
+        "ppad-pbkdf": "ppad-pbkdf",
         "ppad-ripemd160": "ppad-ripemd160",
         "ppad-script": "ppad-script",
         "ppad-secp256k1": "ppad-secp256k1",

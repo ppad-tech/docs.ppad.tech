@@ -52,6 +52,14 @@
       inputs.ppad-sha256.follows = "ppad-sha256";
       inputs.ppad-sha512.follows = "ppad-sha512";
     };
+    ppad-pbkdf = {
+      type = "git";
+      url  = "git://git.ppad.tech/pbkdf.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-sha256.follows = "ppad-sha256";
+      inputs.ppad-sha512.follows = "ppad-sha512";
+    };
     ppad-hkdf = {
       type = "git";
       url  = "git://git.ppad.tech/hkdf.git";
@@ -102,7 +110,7 @@
   outputs = { self, nixpkgs, flake-utils, ppad-nixpkgs
             , ppad-sha256, ppad-sha512, ppad-ripemd160
             , ppad-bech32, ppad-base58, ppad-base16
-            , ppad-hmac-drbg, ppad-hkdf
+            , ppad-hmac-drbg, ppad-hkdf, ppad-pbkdf
             , ppad-csecp256k1, ppad-secp256k1
             , ppad-script, ppad-bip32
             }:
@@ -120,6 +128,7 @@
           ppad-ripemd160 = ppad-ripemd160.packages.${system}.default;
           ppad-hmac-drbg = ppad-hmac-drbg.packages.${system}.default;
           ppad-hkdf = ppad-hkdf.packages.${system}.default;
+          ppad-pbkdf = ppad-pbkdf.packages.${system}.default;
           ppad-csecp256k1 = ppad-csecp256k1.packages.${system}.default;
           ppad-secp256k1 = ppad-secp256k1.packages.${system}.default;
           ppad-script = ppad-script.packages.${system}.default;
@@ -139,6 +148,7 @@
             { name = "ripemd160"; path = docpath "ppad-ripemd160"; }
             { name = "hmac-drbg"; path = docpath "ppad-hmac-drbg"; }
             { name = "hkdf"; path = docpath "ppad-hkdf"; }
+            { name = "pbkdf"; path = docpath "ppad-pbkdf"; }
             { name = "csecp256k1"; path = docpath "ppad-csecp256k1"; }
             { name = "secp256k1"; path = docpath "ppad-secp256k1"; }
             { name = "script"; path = docpath "ppad-script"; }
@@ -171,6 +181,7 @@
                 --read-interface=ppad-base58,$src/base58/ppad-base58.haddock \
                 --read-interface=ppad-base16,$src/base16/ppad-base16.haddock \
                 --read-interface=ppad-hkdf,$src/hkdf/ppad-hkdf.haddock \
+                --read-interface=ppad-pbkdf,$src/pbkdf/ppad-pbkdf.haddock \
                 --read-interface=ppad-script,$src/script/ppad-script.haddock \
                 --read-interface=ppad-bip32,$src/bip32/ppad-bip32.haddock
             '';
