@@ -96,6 +96,17 @@
       inputs.ppad-sha256.follows = "ppad-sha256";
       inputs.ppad-sha512.follows = "ppad-sha512";
     };
+    ppad-bip39 = {
+      type = "git";
+      url  = "git://git.ppad.tech/bip39.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
+      inputs.ppad-sha256.follows = "ppad-sha256";
+      inputs.ppad-sha512.follows = "ppad-sha512";
+      inputs.ppad-pbkdf.follows = "ppad-pbkdf";
+      inputs.ppad-bip32.follows = "ppad-bip32";
+    };
     ppad-script = {
       type = "git";
       url  = "git://git.ppad.tech/script.git";
@@ -112,7 +123,7 @@
             , ppad-bech32, ppad-base58, ppad-base16
             , ppad-hmac-drbg, ppad-hkdf, ppad-pbkdf
             , ppad-csecp256k1, ppad-secp256k1
-            , ppad-script, ppad-bip32
+            , ppad-script, ppad-bip32, ppad-bip39
             }:
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -133,6 +144,7 @@
           ppad-secp256k1 = ppad-secp256k1.packages.${system}.default;
           ppad-script = ppad-script.packages.${system}.default;
           ppad-bip32 = ppad-bip32.packages.${system}.default;
+          ppad-bip39 = ppad-bip39.packages.${system}.default;
         });
 
         docpath = name:
@@ -153,6 +165,7 @@
             { name = "secp256k1"; path = docpath "ppad-secp256k1"; }
             { name = "script"; path = docpath "ppad-script"; }
             { name = "bip32"; path = docpath "ppad-bip32"; }
+            { name = "bip39"; path = docpath "ppad-bip39"; }
           ];
 
       in
@@ -183,7 +196,8 @@
                 --read-interface=ppad-hkdf,$src/hkdf/ppad-hkdf.haddock \
                 --read-interface=ppad-pbkdf,$src/pbkdf/ppad-pbkdf.haddock \
                 --read-interface=ppad-script,$src/script/ppad-script.haddock \
-                --read-interface=ppad-bip32,$src/bip32/ppad-bip32.haddock
+                --read-interface=ppad-bip32,$src/bip32/ppad-bip32.haddock \
+                --read-interface=ppad-bip39,$src/bip39/ppad-bip39.haddock
             '';
 
             fixupPhase = ''
