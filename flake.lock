@@ -245,11 +245,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740679207,
-        "narHash": "sha256-MtjHdJPMahdcKHgdDB4DrLGH3kaBW5JFG/Z26DcKyf8=",
+        "lastModified": 1740679487,
+        "narHash": "sha256-Fp49R7Peo/hPL+QZfxP5Mp8rgmTAd8iBiidlB831NBM=",
         "ref": "master",
-        "rev": "71ac325ec9685900569dbe98644e2dda8272fb3b",
-        "revCount": 22,
+        "rev": "8c743a9742a37c1634d5acfe37d7f63660731565",
+        "revCount": 24,
         "type": "git",
         "url": "git://git.ppad.tech/bip39.git"
       },
@@ -411,11 +411,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740385647,
-        "narHash": "sha256-ECCWrVxDmCVGXbBRwDSSH3PAvwQolCtx4ZdfhRZz9pI=",
+        "lastModified": 1740456623,
+        "narHash": "sha256-s29IVCEZMOhlq56Z4DAq+2UX8yYn/f+n3mIQMTGbuaQ=",
         "ref": "master",
-        "rev": "15a7fe19cf9759d28e401debfe138a42525e0be9",
-        "revCount": 11,
+        "rev": "d249a794ca47cb4e3abe494dcde80767d84b8632",
+        "revCount": 12,
         "type": "git",
         "url": "git://git.ppad.tech/pbkdf.git"
       },
