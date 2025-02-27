@@ -245,11 +245,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740679487,
-        "narHash": "sha256-Fp49R7Peo/hPL+QZfxP5Mp8rgmTAd8iBiidlB831NBM=",
+        "lastModified": 1740681831,
+        "narHash": "sha256-xK0FtBTBdGI4g794kci0aien8cGSAwVkiYfLw2Tdl48=",
         "ref": "master",
-        "rev": "8c743a9742a37c1634d5acfe37d7f63660731565",
-        "revCount": 24,
+        "rev": "fce277cba3e31c098dc1e6bce6842038c14aece2",
+        "revCount": 28,
         "type": "git",
         "url": "git://git.ppad.tech/bip39.git"
       },
