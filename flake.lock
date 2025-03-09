@@ -293,6 +293,40 @@
         "url": "git://git.ppad.tech/bip39.git"
       }
     },
+    "ppad-chacha": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-chacha",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-chacha",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-base16": [
+          "ppad-base16"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1741521082,
+        "narHash": "sha256-Y8PA5Y4d7Rj6qgwnrgTyg5BvHGLLA/FAOWC+dxRnbDA=",
+        "ref": "master",
+        "rev": "3b25b1dd3f346b2374dba198817749e61f8dcf91",
+        "revCount": 15,
+        "type": "git",
+        "url": "git://git.ppad.tech/chacha.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/chacha.git"
+      }
+    },
     "ppad-csecp256k1": {
       "inputs": {
         "flake-utils": [
@@ -458,6 +492,40 @@
         "ref": "master",
         "type": "git",
         "url": "git://git.ppad.tech/pbkdf.git"
+      }
+    },
+    "ppad-poly1305": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-poly1305",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-poly1305",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-base16": [
+          "ppad-base16"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1741531442,
+        "narHash": "sha256-GKFlSlcEGPmyvjtjJPiFDH++6/TWO15grMa7hf199UE=",
+        "ref": "master",
+        "rev": "f6c23104c2f4f98f8696afca5850acf83193aee0",
+        "revCount": 7,
+        "type": "git",
+        "url": "git://git.ppad.tech/poly1305.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/poly1305.git"
       }
     },
     "ppad-ripemd160": {
@@ -642,11 +710,13 @@
         "ppad-bech32": "ppad-bech32",
         "ppad-bip32": "ppad-bip32",
         "ppad-bip39": "ppad-bip39",
+        "ppad-chacha": "ppad-chacha",
         "ppad-csecp256k1": "ppad-csecp256k1",
         "ppad-hkdf": "ppad-hkdf",
         "ppad-hmac-drbg": "ppad-hmac-drbg",
         "ppad-nixpkgs": "ppad-nixpkgs",
         "ppad-pbkdf": "ppad-pbkdf",
+        "ppad-poly1305": "ppad-poly1305",
         "ppad-ripemd160": "ppad-ripemd160",
         "ppad-script": "ppad-script",
         "ppad-secp256k1": "ppad-secp256k1",
