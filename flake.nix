@@ -59,6 +59,13 @@
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
       inputs.ppad-base16.follows = "ppad-base16";
     };
+    ppad-poly1305 = {
+      type = "git";
+      url  = "git://git.ppad.tech/poly1305.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
+    };
     ppad-pbkdf = {
       type = "git";
       url  = "git://git.ppad.tech/pbkdf.git";
@@ -129,7 +136,7 @@
             , ppad-sha256, ppad-sha512, ppad-ripemd160
             , ppad-bech32, ppad-base58, ppad-base16
             , ppad-hmac-drbg, ppad-hkdf, ppad-pbkdf
-            , ppad-chacha
+            , ppad-chacha, ppad-poly1305
             , ppad-csecp256k1, ppad-secp256k1
             , ppad-script, ppad-bip32, ppad-bip39
             }:
@@ -146,6 +153,7 @@
           ppad-bech32 = ppad-bech32.packages.${system}.default;
           ppad-ripemd160 = ppad-ripemd160.packages.${system}.default;
           ppad-chacha = ppad-chacha.packages.${system}.default;
+          ppad-poly1305 = ppad-poly1305.packages.${system}.default;
           ppad-hmac-drbg = ppad-hmac-drbg.packages.${system}.default;
           ppad-hkdf = ppad-hkdf.packages.${system}.default;
           ppad-pbkdf = ppad-pbkdf.packages.${system}.default;
@@ -169,6 +177,7 @@
             { name = "ripemd160"; path = docpath "ppad-ripemd160"; }
             { name = "hmac-drbg"; path = docpath "ppad-hmac-drbg"; }
             { name = "chacha"; path = docpath "ppad-chacha"; }
+            { name = "poly1305"; path = docpath "ppad-poly1305"; }
             { name = "hkdf"; path = docpath "ppad-hkdf"; }
             { name = "pbkdf"; path = docpath "ppad-pbkdf"; }
             { name = "csecp256k1"; path = docpath "ppad-csecp256k1"; }
@@ -198,6 +207,7 @@
                 --read-interface=ppad-sha512,$src/sha512/ppad-sha512.haddock \
                 --read-interface=ppad-ripemd160,$src/ripemd160/ppad-ripemd160.haddock \
                 --read-interface=ppad-chacha,$src/chacha/ppad-chacha.haddock \
+                --read-interface=ppad-poly1305,$src/poly1305/ppad-poly1305.haddock \
                 --read-interface=ppad-hmac-drbg,$src/hmac-drbg/ppad-hmac-drbg.haddock \
                 --read-interface=ppad-csecp256k1,$src/csecp256k1/ppad-csecp256k1.haddock \
                 --read-interface=ppad-secp256k1,$src/secp256k1/ppad-secp256k1.haddock \
