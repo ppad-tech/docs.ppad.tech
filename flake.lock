@@ -579,11 +579,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740802965,
-        "narHash": "sha256-3Ot/JZB3Wth7Ro1W+VmumBNlZS3zuXSYrzpfX9X0ZNc=",
+        "lastModified": 1741625851,
+        "narHash": "sha256-jE/khPP9q5vP34SSjXwOtS06i+SrWdhxaNopeanWEFQ=",
         "ref": "master",
-        "rev": "4162e41f5ac5a206bf8f80063158af22a717c46a",
-        "revCount": 66,
+        "rev": "99988478ed9f5c5cb6df422049d65c74ea211ad3",
+        "revCount": 67,
         "type": "git",
         "url": "git://git.ppad.tech/script.git"
       },
