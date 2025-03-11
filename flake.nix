@@ -66,6 +66,15 @@
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
       inputs.ppad-base16.follows = "ppad-base16";
     };
+    ppad-aead = {
+      type = "git";
+      url  = "git://git.ppad.tech/aead.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
+      inputs.ppad-chacha.follows = "ppad-chacha";
+      inputs.ppad-poly1305.follows = "ppad-poly1305";
+    };
     ppad-pbkdf = {
       type = "git";
       url  = "git://git.ppad.tech/pbkdf.git";
@@ -136,7 +145,7 @@
             , ppad-sha256, ppad-sha512, ppad-ripemd160
             , ppad-bech32, ppad-base58, ppad-base16
             , ppad-hmac-drbg, ppad-hkdf, ppad-pbkdf
-            , ppad-chacha, ppad-poly1305
+            , ppad-chacha, ppad-poly1305, ppad-aead
             , ppad-csecp256k1, ppad-secp256k1
             , ppad-script, ppad-bip32, ppad-bip39
             }:
@@ -152,6 +161,7 @@
           ppad-base16 = ppad-base16.packages.${system}.default;
           ppad-bech32 = ppad-bech32.packages.${system}.default;
           ppad-ripemd160 = ppad-ripemd160.packages.${system}.default;
+          ppad-aead = ppad-aead.packages.${system}.default;
           ppad-chacha = ppad-chacha.packages.${system}.default;
           ppad-poly1305 = ppad-poly1305.packages.${system}.default;
           ppad-hmac-drbg = ppad-hmac-drbg.packages.${system}.default;
@@ -176,6 +186,7 @@
             { name = "bech32"; path = docpath "ppad-bech32"; }
             { name = "ripemd160"; path = docpath "ppad-ripemd160"; }
             { name = "hmac-drbg"; path = docpath "ppad-hmac-drbg"; }
+            { name = "aead"; path = docpath "ppad-aead"; }
             { name = "chacha"; path = docpath "ppad-chacha"; }
             { name = "poly1305"; path = docpath "ppad-poly1305"; }
             { name = "hkdf"; path = docpath "ppad-hkdf"; }
@@ -206,6 +217,7 @@
                 --read-interface=ppad-sha256,$src/sha256/ppad-sha256.haddock \
                 --read-interface=ppad-sha512,$src/sha512/ppad-sha512.haddock \
                 --read-interface=ppad-ripemd160,$src/ripemd160/ppad-ripemd160.haddock \
+                --read-interface=ppad-aead,$src/aead/ppad-aead.haddock \
                 --read-interface=ppad-chacha,$src/chacha/ppad-chacha.haddock \
                 --read-interface=ppad-poly1305,$src/poly1305/ppad-poly1305.haddock \
                 --read-interface=ppad-hmac-drbg,$src/hmac-drbg/ppad-hmac-drbg.haddock \
