@@ -659,11 +659,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1741950137,
-        "narHash": "sha256-9NTMZ+WSZ+81Ys9RBkLqDo06ZPo0hgcCAwvy8ehbDIA=",
+        "lastModified": 1742180816,
+        "narHash": "sha256-xIoeIokHo78rzBFnONJ2ojjrz0w8bDugFcMZBXQ+oL8=",
         "ref": "master",
-        "rev": "f179ea0c298a8d9d0bc20649003554e5d22939b7",
-        "revCount": 155,
+        "rev": "f7b80775bd3a7fcf27350f100897136630496b18",
+        "revCount": 156,
         "type": "git",
         "url": "git://git.ppad.tech/secp256k1.git"
       },
