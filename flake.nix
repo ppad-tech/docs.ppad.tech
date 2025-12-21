@@ -7,23 +7,32 @@
       url  = "git://git.ppad.tech/nixpkgs.git";
       ref  = "master";
     };
+    ppad-fixed = {
+      type = "git";
+      url  = "git://git.ppad.tech/fixed.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+    };
     ppad-sha256 = {
       type = "git";
       url  = "git://git.ppad.tech/sha256.git";
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
     };
     ppad-sha512 = {
       type = "git";
       url  = "git://git.ppad.tech/sha512.git";
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
     };
     ppad-ripemd160 = {
       type = "git";
       url  = "git://git.ppad.tech/ripemd160.git";
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
     };
     ppad-bech32 = {
       type = "git";
@@ -42,6 +51,7 @@
       url  = "git://git.ppad.tech/base58.git";
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
       inputs.ppad-sha256.follows = "ppad-sha256";
     };
     ppad-hmac-drbg = {
@@ -49,6 +59,7 @@
       url  = "git://git.ppad.tech/hmac-drbg.git";
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
       inputs.ppad-sha256.follows = "ppad-sha256";
       inputs.ppad-sha512.follows = "ppad-sha512";
     };
@@ -80,6 +91,7 @@
       url  = "git://git.ppad.tech/pbkdf.git";
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
       inputs.ppad-sha256.follows = "ppad-sha256";
       inputs.ppad-sha512.follows = "ppad-sha512";
     };
@@ -88,6 +100,7 @@
       url  = "git://git.ppad.tech/hkdf.git";
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
       inputs.ppad-sha256.follows = "ppad-sha256";
       inputs.ppad-sha512.follows = "ppad-sha512";
     };
@@ -96,6 +109,7 @@
       url  = "git://git.ppad.tech/csecp256k1.git";
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
       inputs.ppad-sha256.follows = "ppad-sha256";
     };
     ppad-secp256k1 = {
@@ -103,6 +117,8 @@
       url  = "git://git.ppad.tech/secp256k1.git";
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-fixed.follows = "ppad-fixed";
+      inputs.ppad-base16.follows = "ppad-base16";
       inputs.ppad-sha256.follows = "ppad-sha256";
       inputs.ppad-sha512.follows = "ppad-sha512";
       inputs.ppad-hmac-drbg.follows = "ppad-hmac-drbg";
@@ -142,6 +158,7 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, ppad-nixpkgs
+            , ppad-fixed
             , ppad-sha256, ppad-sha512, ppad-ripemd160
             , ppad-bech32, ppad-base58, ppad-base16
             , ppad-hmac-drbg, ppad-hkdf, ppad-pbkdf
@@ -155,6 +172,7 @@
         hlib = pkgs.haskell.lib;
 
         hpkgs = pkgs.haskell.packages.ghc981.extend (new: old: {
+          ppad-fixed = ppad-fixed.packages.${system}.default;
           ppad-sha256 = ppad-sha256.packages.${system}.default;
           ppad-sha512 = ppad-sha512.packages.${system}.default;
           ppad-base58 = ppad-base58.packages.${system}.default;
@@ -179,6 +197,7 @@
           in  "${doc}/share/doc/${name}-${hpkgs.${name}.version}/html";
 
         docs = pkgs.linkFarm "docs.ppad.tech" [
+            { name = "fixed"; path = docpath "ppad-fixed"; }
             { name = "sha256"; path = docpath "ppad-sha256"; }
             { name = "sha512"; path = docpath "ppad-sha512"; }
             { name = "base58"; path = docpath "ppad-base58"; }
@@ -214,6 +233,7 @@
               cp -r ${hpkgs.ghc.doc} $out
 
               haddock -o "$out" --quickjump --gen-index --gen-contents \
+                --read-interface=ppad-fixed,$src/fixed/ppad-fixed.haddock \
                 --read-interface=ppad-sha256,$src/sha256/ppad-sha256.haddock \
                 --read-interface=ppad-sha512,$src/sha512/ppad-sha512.haddock \
                 --read-interface=ppad-ripemd160,$src/ripemd160/ppad-ripemd160.haddock \
