@@ -131,6 +131,7 @@
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
       inputs.ppad-base16.follows = "ppad-base16";
       inputs.ppad-base58.follows = "ppad-base58";
+      inputs.ppad-fixed.follows = "ppad-fixed";
       inputs.ppad-ripemd160.follows = "ppad-ripemd160";
       inputs.ppad-secp256k1.follows = "ppad-secp256k1";
       inputs.ppad-sha256.follows = "ppad-sha256";
