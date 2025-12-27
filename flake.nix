@@ -75,6 +75,7 @@
       url  = "git://git.ppad.tech/poly1305.git";
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-fixed.follows = "ppad-fixed";
       inputs.ppad-base16.follows = "ppad-base16";
     };
     ppad-aead = {
