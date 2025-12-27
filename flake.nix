@@ -234,6 +234,8 @@
 
               cp -r ${hpkgs.ghc.doc} $out
 
+              chmod -R u+w $out
+
               haddock -o "$out" --quickjump --gen-index --gen-contents \
                 --read-interface=ppad-fixed,$src/fixed/ppad-fixed.haddock \
                 --read-interface=ppad-sha256,$src/sha256/ppad-sha256.haddock \
@@ -258,6 +260,11 @@
             fixupPhase = ''
               sed -i 's/href="ppad\-/href="/g' $out/index.html
               sed -i 's/href="ppad\-/href="/g' $out/doc-index.html
+
+              # rewrite nix store paths to relative paths for ppad-* deps
+              for f in $(find $out -name "*.html"); do
+                sed -i 's|file:///nix/store/[^-]*-ppad-\([^-]*\)-[^/]*/share/doc/ppad-[^/]*/html/|../\1/|g' "$f"
+              done
             '';
           };
         }
