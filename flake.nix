@@ -173,7 +173,7 @@
         pkgs = import nixpkgs { inherit system; };
         hlib = pkgs.haskell.lib;
 
-        hpkgs = pkgs.haskell.packages.ghc981.extend (new: old: {
+        hpkgs = pkgs.haskell.packages.ghc910.extend (new: old: {
           ppad-fixed = ppad-fixed.packages.${system}.default;
           ppad-sha256 = ppad-sha256.packages.${system}.default;
           ppad-sha512 = ppad-sha512.packages.${system}.default;
