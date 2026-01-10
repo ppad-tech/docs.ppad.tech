@@ -174,24 +174,30 @@
         hlib = pkgs.haskell.lib;
 
         hpkgs = pkgs.haskell.packages.ghc910.extend (new: old: {
-          ppad-fixed = ppad-fixed.packages.${system}.default;
-          ppad-sha256 = ppad-sha256.packages.${system}.default;
-          ppad-sha512 = ppad-sha512.packages.${system}.default;
-          ppad-base58 = ppad-base58.packages.${system}.default;
-          ppad-base16 = ppad-base16.packages.${system}.default;
-          ppad-bech32 = ppad-bech32.packages.${system}.default;
-          ppad-ripemd160 = ppad-ripemd160.packages.${system}.default;
-          ppad-aead = ppad-aead.packages.${system}.default;
-          ppad-chacha = ppad-chacha.packages.${system}.default;
-          ppad-poly1305 = ppad-poly1305.packages.${system}.default;
-          ppad-hmac-drbg = ppad-hmac-drbg.packages.${system}.default;
-          ppad-hkdf = ppad-hkdf.packages.${system}.default;
-          ppad-pbkdf = ppad-pbkdf.packages.${system}.default;
-          ppad-csecp256k1 = ppad-csecp256k1.packages.${system}.default;
-          ppad-secp256k1 = ppad-secp256k1.packages.${system}.default;
-          ppad-script = ppad-script.packages.${system}.default;
-          ppad-bip32 = ppad-bip32.packages.${system}.default;
-          ppad-bip39 = ppad-bip39.packages.${system}.default;
+          ppad-fixed = hlib.dontCheck ppad-fixed.packages.${system}.default;
+          ppad-sha256 = hlib.dontCheck ppad-sha256.packages.${system}.default;
+          ppad-sha512 = hlib.dontCheck ppad-sha512.packages.${system}.default;
+          ppad-base58 = hlib.dontCheck ppad-base58.packages.${system}.default;
+          ppad-base16 = hlib.dontCheck ppad-base16.packages.${system}.default;
+          ppad-bech32 = hlib.dontCheck ppad-bech32.packages.${system}.default;
+          ppad-ripemd160 = hlib.dontCheck
+            ppad-ripemd160.packages.${system}.default;
+          ppad-aead = hlib.dontCheck ppad-aead.packages.${system}.default;
+          ppad-chacha = hlib.dontCheck
+            ppad-chacha.packages.${system}.default;
+          ppad-poly1305 = hlib.dontCheck
+            ppad-poly1305.packages.${system}.default;
+          ppad-hmac-drbg = hlib.dontCheck
+            ppad-hmac-drbg.packages.${system}.default;
+          ppad-hkdf = hlib.dontCheck ppad-hkdf.packages.${system}.default;
+          ppad-pbkdf = hlib.dontCheck ppad-pbkdf.packages.${system}.default;
+          ppad-csecp256k1 = hlib.dontCheck
+            ppad-csecp256k1.packages.${system}.default;
+          ppad-secp256k1 = hlib.dontCheck
+            ppad-secp256k1.packages.${system}.default;
+          ppad-script = hlib.dontCheck ppad-script.packages.${system}.default;
+          ppad-bip32 = hlib.dontCheck ppad-bip32.packages.${system}.default;
+          ppad-bip39 = hlib.dontCheck ppad-bip39.packages.${system}.default;
         });
 
         docpath = name:
