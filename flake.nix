@@ -155,6 +155,17 @@
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
       inputs.ppad-base16.follows = "ppad-base16";
     };
+    ppad-bolt8 = {
+      type = "git";
+      url  = "git://git.ppad.tech/bolt8.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-aead.follows = "ppad-aead";
+      inputs.ppad-base16.follows = "ppad-base16";
+      inputs.ppad-hkdf.follows = "ppad-hkdf";
+      inputs.ppad-secp256k1.follows = "ppad-secp256k1";
+      inputs.ppad-sha256.follows = "ppad-sha256";
+    };
     flake-utils.follows = "ppad-nixpkgs/flake-utils";
     nixpkgs.follows = "ppad-nixpkgs/nixpkgs";
   };
@@ -167,6 +178,7 @@
             , ppad-chacha, ppad-poly1305, ppad-aead
             , ppad-csecp256k1, ppad-secp256k1
             , ppad-script, ppad-bip32, ppad-bip39
+            , ppad-bolt8
             }:
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -198,6 +210,7 @@
           ppad-script = hlib.dontCheck ppad-script.packages.${system}.default;
           ppad-bip32 = hlib.dontCheck ppad-bip32.packages.${system}.default;
           ppad-bip39 = hlib.dontCheck ppad-bip39.packages.${system}.default;
+          ppad-bolt8 = hlib.dontCheck ppad-bolt8.packages.${system}.default;
         });
 
         docpath = name:
@@ -223,6 +236,7 @@
             { name = "script"; path = docpath "ppad-script"; }
             { name = "bip32"; path = docpath "ppad-bip32"; }
             { name = "bip39"; path = docpath "ppad-bip39"; }
+            { name = "bolt8"; path = docpath "ppad-bolt8"; }
           ];
 
       in
@@ -260,7 +274,8 @@
                 --read-interface=ppad-pbkdf,$src/pbkdf/ppad-pbkdf.haddock \
                 --read-interface=ppad-script,$src/script/ppad-script.haddock \
                 --read-interface=ppad-bip32,$src/bip32/ppad-bip32.haddock \
-                --read-interface=ppad-bip39,$src/bip39/ppad-bip39.haddock
+                --read-interface=ppad-bip39,$src/bip39/ppad-bip39.haddock \
+                --read-interface=ppad-bolt8,$src/bolt8/ppad-bolt8.haddock
             '';
 
             fixupPhase = ''
