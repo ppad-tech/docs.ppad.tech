@@ -105,6 +105,120 @@
         "url": "git://git.ppad.tech/base16.git"
       }
     },
+    "ppad-base16_2": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-bolt2",
+          "ppad-tx",
+          "ppad-base16",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-bolt2",
+          "ppad-tx",
+          "ppad-base16",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-bolt2",
+          "ppad-tx",
+          "ppad-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766934151,
+        "narHash": "sha256-BUFpuLfrGXE2xi3Wa9TYCEhhRhFp175Ghxnr0JRbG2I=",
+        "ref": "master",
+        "rev": "58dfb7922401a60d5de76825fcd5f6ecbcd7afe0",
+        "revCount": 26,
+        "type": "git",
+        "url": "git://git.ppad.tech/base16.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/base16.git"
+      }
+    },
+    "ppad-base16_3": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-bolt2",
+          "ppad-tx",
+          "ppad-sha256",
+          "ppad-base16",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-bolt2",
+          "ppad-tx",
+          "ppad-sha256",
+          "ppad-base16",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-bolt2",
+          "ppad-tx",
+          "ppad-sha256",
+          "ppad-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766934151,
+        "narHash": "sha256-BUFpuLfrGXE2xi3Wa9TYCEhhRhFp175Ghxnr0JRbG2I=",
+        "ref": "master",
+        "rev": "58dfb7922401a60d5de76825fcd5f6ecbcd7afe0",
+        "revCount": 26,
+        "type": "git",
+        "url": "git://git.ppad.tech/base16.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/base16.git"
+      }
+    },
+    "ppad-base16_4": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-bolt3",
+          "ppad-tx",
+          "ppad-base16",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-bolt3",
+          "ppad-tx",
+          "ppad-base16",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-bolt3",
+          "ppad-tx",
+          "ppad-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766934151,
+        "narHash": "sha256-BUFpuLfrGXE2xi3Wa9TYCEhhRhFp175Ghxnr0JRbG2I=",
+        "ref": "master",
+        "rev": "58dfb7922401a60d5de76825fcd5f6ecbcd7afe0",
+        "revCount": 26,
+        "type": "git",
+        "url": "git://git.ppad.tech/base16.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/base16.git"
+      }
+    },
     "ppad-base58": {
       "inputs": {
         "flake-utils": [
@@ -323,14 +437,15 @@
         ],
         "ppad-nixpkgs": [
           "ppad-nixpkgs"
-        ]
+        ],
+        "ppad-tx": "ppad-tx"
       },
       "locked": {
-        "lastModified": 1776489342,
-        "narHash": "sha256-IhRMaDD/8MGqFkDSsgO1pingN2pNnFwrW2FjHHMLjZw=",
+        "lastModified": 1776515926,
+        "narHash": "sha256-57gomwyeJKHmkdkXsEesfph6VJYxX37rqFQGPexXPK4=",
         "ref": "master",
-        "rev": "b364652ce341c38ed96f6f368bacd2dd01ec922c",
-        "revCount": 21,
+        "rev": "19f6c064afa9b88faf67374fd8436ea4577dc327",
+        "revCount": 24,
         "type": "git",
         "url": "git://git.ppad.tech/bolt2.git"
       },
@@ -363,14 +478,15 @@
         ],
         "ppad-sha256": [
           "ppad-sha256"
-        ]
+        ],
+        "ppad-tx": "ppad-tx_2"
       },
       "locked": {
-        "lastModified": 1776491459,
-        "narHash": "sha256-0a7FVIFCXr73h1pBirsz2Rw5Ngp1c5h788FLt4MKrdE=",
+        "lastModified": 1776515943,
+        "narHash": "sha256-dpXMy6JzqA5jwt+9HxofN4ludlx6k3bM/G919U2DeKM=",
         "ref": "master",
-        "rev": "6a809e912618de1d108035819609f9dab9f7d8c2",
-        "revCount": 31,
+        "rev": "23c984f83e3c629f3b8a7c1b123a7b298c394352",
+        "revCount": 35,
         "type": "git",
         "url": "git://git.ppad.tech/bolt3.git"
       },
@@ -988,6 +1104,44 @@
     "ppad-sha256": {
       "inputs": {
         "flake-utils": [
+          "ppad-bolt2",
+          "ppad-tx",
+          "ppad-sha256",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-bolt2",
+          "ppad-tx",
+          "ppad-sha256",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-base16": "ppad-base16_3",
+        "ppad-nixpkgs": [
+          "ppad-bolt2",
+          "ppad-tx",
+          "ppad-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768121850,
+        "narHash": "sha256-RxgAI88nZi4o4xYj1v+GC0X5E9adae12dDSmv/GFu2Y=",
+        "ref": "master",
+        "rev": "916595b21319ca270ce8beb9c742bf7e632cccc9",
+        "revCount": 118,
+        "type": "git",
+        "url": "git://git.ppad.tech/sha256.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/sha256.git"
+      }
+    },
+    "ppad-sha256_2": {
+      "inputs": {
+        "flake-utils": [
           "ppad-sha256",
           "ppad-nixpkgs",
           "flake-utils"
@@ -1056,6 +1210,81 @@
     "ppad-tx": {
       "inputs": {
         "flake-utils": [
+          "ppad-bolt2",
+          "ppad-tx",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-bolt2",
+          "ppad-tx",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-base16": "ppad-base16_2",
+        "ppad-nixpkgs": [
+          "ppad-bolt2",
+          "ppad-nixpkgs"
+        ],
+        "ppad-sha256": "ppad-sha256"
+      },
+      "locked": {
+        "lastModified": 1776515759,
+        "narHash": "sha256-yRHrY3d3tL8ZM1dWKPYvaz7H3YsPtM8vd2ZwJKL2/nQ=",
+        "ref": "master",
+        "rev": "6e22072caac8c1db991c2640fcb795afba8c294a",
+        "revCount": 20,
+        "type": "git",
+        "url": "git://git.ppad.tech/tx.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/tx.git"
+      }
+    },
+    "ppad-tx_2": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-bolt3",
+          "ppad-tx",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-bolt3",
+          "ppad-tx",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-base16": "ppad-base16_4",
+        "ppad-nixpkgs": [
+          "ppad-bolt3",
+          "ppad-nixpkgs"
+        ],
+        "ppad-sha256": [
+          "ppad-bolt3",
+          "ppad-sha256"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776515759,
+        "narHash": "sha256-yRHrY3d3tL8ZM1dWKPYvaz7H3YsPtM8vd2ZwJKL2/nQ=",
+        "ref": "master",
+        "rev": "6e22072caac8c1db991c2640fcb795afba8c294a",
+        "revCount": 20,
+        "type": "git",
+        "url": "git://git.ppad.tech/tx.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/tx.git"
+      }
+    },
+    "ppad-tx_3": {
+      "inputs": {
+        "flake-utils": [
           "ppad-tx",
           "ppad-nixpkgs",
           "flake-utils"
@@ -1076,11 +1305,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776513314,
-        "narHash": "sha256-95aSUiQokIevDABa1smBEZQ6g9njV1KoUoKNr7X7oS4=",
+        "lastModified": 1776515759,
+        "narHash": "sha256-yRHrY3d3tL8ZM1dWKPYvaz7H3YsPtM8vd2ZwJKL2/nQ=",
         "ref": "master",
-        "rev": "7bb595ed894086fcc03e6d42c820fbecd436b3e4",
-        "revCount": 19,
+        "rev": "6e22072caac8c1db991c2640fcb795afba8c294a",
+        "revCount": 20,
         "type": "git",
         "url": "git://git.ppad.tech/tx.git"
       },
@@ -1124,9 +1353,9 @@
         "ppad-ripemd160": "ppad-ripemd160",
         "ppad-script": "ppad-script",
         "ppad-secp256k1": "ppad-secp256k1",
-        "ppad-sha256": "ppad-sha256",
+        "ppad-sha256": "ppad-sha256_2",
         "ppad-sha512": "ppad-sha512",
-        "ppad-tx": "ppad-tx"
+        "ppad-tx": "ppad-tx_3"
       }
     },
     "systems": {
