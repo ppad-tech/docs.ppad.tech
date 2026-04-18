@@ -175,6 +175,14 @@
       inputs.ppad-secp256k1.follows = "ppad-secp256k1";
       inputs.ppad-sha256.follows = "ppad-sha256";
     };
+    ppad-bolt7 = {
+      type = "git";
+      url  = "git://git.ppad.tech/bolt7.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-bolt1.follows = "ppad-bolt1";
+      inputs.ppad-sha256.follows = "ppad-sha256";
+    };
     ppad-bolt8 = {
       type = "git";
       url  = "git://git.ppad.tech/bolt8.git";
@@ -198,7 +206,7 @@
             , ppad-chacha, ppad-poly1305, ppad-aead
             , ppad-csecp256k1, ppad-secp256k1
             , ppad-script, ppad-bip32, ppad-bip39
-            , ppad-bolt1, ppad-bolt4, ppad-bolt8
+            , ppad-bolt1, ppad-bolt4, ppad-bolt7, ppad-bolt8
             }:
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -232,6 +240,7 @@
           ppad-bip39 = hlib.dontCheck ppad-bip39.packages.${system}.default;
           ppad-bolt1 = hlib.dontCheck ppad-bolt1.packages.${system}.default;
           ppad-bolt4 = hlib.dontCheck ppad-bolt4.packages.${system}.default;
+          ppad-bolt7 = hlib.dontCheck ppad-bolt7.packages.${system}.default;
           ppad-bolt8 = hlib.dontCheck ppad-bolt8.packages.${system}.default;
         });
 
@@ -260,6 +269,7 @@
             { name = "bip39"; path = docpath "ppad-bip39"; }
             { name = "bolt1"; path = docpath "ppad-bolt1"; }
             { name = "bolt4"; path = docpath "ppad-bolt4"; }
+            { name = "bolt7"; path = docpath "ppad-bolt7"; }
             { name = "bolt8"; path = docpath "ppad-bolt8"; }
           ];
 
@@ -301,6 +311,7 @@
                 --read-interface=ppad-bip39,$src/bip39/ppad-bip39.haddock \
                 --read-interface=ppad-bolt1,$src/bolt1/ppad-bolt1.haddock \
                 --read-interface=ppad-bolt4,$src/bolt4/ppad-bolt4.haddock \
+                --read-interface=ppad-bolt7,$src/bolt7/ppad-bolt7.haddock \
                 --read-interface=ppad-bolt8,$src/bolt8/ppad-bolt8.haddock
             '';
 
