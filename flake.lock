@@ -306,6 +306,58 @@
         "url": "git://git.ppad.tech/bolt1.git"
       }
     },
+    "ppad-bolt4": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-bolt4",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-bolt4",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-aead": [
+          "ppad-aead"
+        ],
+        "ppad-base16": [
+          "ppad-base16"
+        ],
+        "ppad-chacha": [
+          "ppad-chacha"
+        ],
+        "ppad-fixed": [
+          "ppad-fixed"
+        ],
+        "ppad-hmac-drbg": [
+          "ppad-hmac-drbg"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-nixpkgs"
+        ],
+        "ppad-secp256k1": [
+          "ppad-secp256k1"
+        ],
+        "ppad-sha256": [
+          "ppad-sha256"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776483115,
+        "narHash": "sha256-tjNAeelSCZ4sfpip4bOGmE3QcH0pary8gB2MZ957Qv8=",
+        "ref": "master",
+        "rev": "c373cb39cdfc8cbbe544d887fa89fb4572260d94",
+        "revCount": 21,
+        "type": "git",
+        "url": "git://git.ppad.tech/bolt4.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/bolt4.git"
+      }
+    },
     "ppad-bolt8": {
       "inputs": {
         "flake-utils": [
@@ -480,11 +532,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768112526,
-        "narHash": "sha256-fyIq1kIca+Bb+vghToRhSI0wmBuTc4wX3NAov/jGI/Y=",
+        "lastModified": 1776482437,
+        "narHash": "sha256-fEgx8t2F0fFxYbSjkIpx/4/RCy3Tc3BrihFdmAKVCRc=",
         "ref": "master",
-        "rev": "aaca17e90fea229cb9d3ab8e9586777a9703399f",
-        "revCount": 28,
+        "rev": "14f4b162373edc9e622cccb0b9e09df8647829fd",
+        "revCount": 29,
         "type": "git",
         "url": "git://git.ppad.tech/hkdf.git"
       },
@@ -876,6 +928,7 @@
         "ppad-bip32": "ppad-bip32",
         "ppad-bip39": "ppad-bip39",
         "ppad-bolt1": "ppad-bolt1",
+        "ppad-bolt4": "ppad-bolt4",
         "ppad-bolt8": "ppad-bolt8",
         "ppad-chacha": "ppad-chacha",
         "ppad-csecp256k1": "ppad-csecp256k1",
