@@ -306,6 +306,80 @@
         "url": "git://git.ppad.tech/bolt1.git"
       }
     },
+    "ppad-bolt2": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-bolt2",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-bolt2",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-bolt1": [
+          "ppad-bolt1"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776489342,
+        "narHash": "sha256-IhRMaDD/8MGqFkDSsgO1pingN2pNnFwrW2FjHHMLjZw=",
+        "ref": "master",
+        "rev": "b364652ce341c38ed96f6f368bacd2dd01ec922c",
+        "revCount": 21,
+        "type": "git",
+        "url": "git://git.ppad.tech/bolt2.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/bolt2.git"
+      }
+    },
+    "ppad-bolt3": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-bolt3",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-bolt3",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-nixpkgs"
+        ],
+        "ppad-ripemd160": [
+          "ppad-ripemd160"
+        ],
+        "ppad-secp256k1": [
+          "ppad-secp256k1"
+        ],
+        "ppad-sha256": [
+          "ppad-sha256"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776489419,
+        "narHash": "sha256-QFYZDy/hIhUEyvUZvWSe5a5K6fJ4qnAdYMqXgL68HOw=",
+        "ref": "master",
+        "rev": "587c49fe3c066ea743a0727f0b8adacfd5966373",
+        "revCount": 30,
+        "type": "git",
+        "url": "git://git.ppad.tech/bolt3.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/bolt3.git"
+      }
+    },
     "ppad-bolt4": {
       "inputs": {
         "flake-utils": [
@@ -965,6 +1039,8 @@
         "ppad-bip32": "ppad-bip32",
         "ppad-bip39": "ppad-bip39",
         "ppad-bolt1": "ppad-bolt1",
+        "ppad-bolt2": "ppad-bolt2",
+        "ppad-bolt3": "ppad-bolt3",
         "ppad-bolt4": "ppad-bolt4",
         "ppad-bolt7": "ppad-bolt7",
         "ppad-bolt8": "ppad-bolt8",

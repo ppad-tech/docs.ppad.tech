@@ -162,6 +162,22 @@
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
       inputs.ppad-base16.follows = "ppad-base16";
     };
+    ppad-bolt2 = {
+      type = "git";
+      url  = "git://git.ppad.tech/bolt2.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-bolt1.follows = "ppad-bolt1";
+    };
+    ppad-bolt3 = {
+      type = "git";
+      url  = "git://git.ppad.tech/bolt3.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-sha256.follows = "ppad-sha256";
+      inputs.ppad-secp256k1.follows = "ppad-secp256k1";
+      inputs.ppad-ripemd160.follows = "ppad-ripemd160";
+    };
     ppad-bolt4 = {
       type = "git";
       url  = "git://git.ppad.tech/bolt4.git";
@@ -206,7 +222,8 @@
             , ppad-chacha, ppad-poly1305, ppad-aead
             , ppad-csecp256k1, ppad-secp256k1
             , ppad-script, ppad-bip32, ppad-bip39
-            , ppad-bolt1, ppad-bolt4, ppad-bolt7, ppad-bolt8
+            , ppad-bolt1, ppad-bolt2, ppad-bolt3
+            , ppad-bolt4, ppad-bolt7, ppad-bolt8
             }:
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -239,6 +256,8 @@
           ppad-bip32 = hlib.dontCheck ppad-bip32.packages.${system}.default;
           ppad-bip39 = hlib.dontCheck ppad-bip39.packages.${system}.default;
           ppad-bolt1 = hlib.dontCheck ppad-bolt1.packages.${system}.default;
+          ppad-bolt2 = hlib.dontCheck ppad-bolt2.packages.${system}.default;
+          ppad-bolt3 = hlib.dontCheck ppad-bolt3.packages.${system}.default;
           ppad-bolt4 = hlib.dontCheck ppad-bolt4.packages.${system}.default;
           ppad-bolt7 = hlib.dontCheck ppad-bolt7.packages.${system}.default;
           ppad-bolt8 = hlib.dontCheck ppad-bolt8.packages.${system}.default;
@@ -268,6 +287,8 @@
             { name = "bip32"; path = docpath "ppad-bip32"; }
             { name = "bip39"; path = docpath "ppad-bip39"; }
             { name = "bolt1"; path = docpath "ppad-bolt1"; }
+            { name = "bolt2"; path = docpath "ppad-bolt2"; }
+            { name = "bolt3"; path = docpath "ppad-bolt3"; }
             { name = "bolt4"; path = docpath "ppad-bolt4"; }
             { name = "bolt7"; path = docpath "ppad-bolt7"; }
             { name = "bolt8"; path = docpath "ppad-bolt8"; }
@@ -310,6 +331,8 @@
                 --read-interface=ppad-bip32,$src/bip32/ppad-bip32.haddock \
                 --read-interface=ppad-bip39,$src/bip39/ppad-bip39.haddock \
                 --read-interface=ppad-bolt1,$src/bolt1/ppad-bolt1.haddock \
+                --read-interface=ppad-bolt2,$src/bolt2/ppad-bolt2.haddock \
+                --read-interface=ppad-bolt3,$src/bolt3/ppad-bolt3.haddock \
                 --read-interface=ppad-bolt4,$src/bolt4/ppad-bolt4.haddock \
                 --read-interface=ppad-bolt7,$src/bolt7/ppad-bolt7.haddock \
                 --read-interface=ppad-bolt8,$src/bolt8/ppad-bolt8.haddock
