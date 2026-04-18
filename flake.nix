@@ -155,6 +155,14 @@
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
       inputs.ppad-base16.follows = "ppad-base16";
     };
+    ppad-tx = {
+      type = "git";
+      url  = "git://git.ppad.tech/tx.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
+      inputs.ppad-sha256.follows = "ppad-sha256";
+    };
     ppad-bolt1 = {
       type = "git";
       url  = "git://git.ppad.tech/bolt1.git";
@@ -227,7 +235,7 @@
             , ppad-hmac-drbg, ppad-hkdf, ppad-pbkdf
             , ppad-chacha, ppad-poly1305, ppad-aead
             , ppad-csecp256k1, ppad-secp256k1
-            , ppad-script, ppad-bip32, ppad-bip39
+            , ppad-script, ppad-tx, ppad-bip32, ppad-bip39
             , ppad-bolt1, ppad-bolt2, ppad-bolt3
             , ppad-bolt4, ppad-bolt7, ppad-bolt8, ppad-bolt9
             }:
@@ -259,6 +267,7 @@
           ppad-secp256k1 = hlib.dontCheck
             ppad-secp256k1.packages.${system}.default;
           ppad-script = hlib.dontCheck ppad-script.packages.${system}.default;
+          ppad-tx = hlib.dontCheck ppad-tx.packages.${system}.default;
           ppad-bip32 = hlib.dontCheck ppad-bip32.packages.${system}.default;
           ppad-bip39 = hlib.dontCheck ppad-bip39.packages.${system}.default;
           ppad-bolt1 = hlib.dontCheck ppad-bolt1.packages.${system}.default;
@@ -291,6 +300,7 @@
             { name = "csecp256k1"; path = docpath "ppad-csecp256k1"; }
             { name = "secp256k1"; path = docpath "ppad-secp256k1"; }
             { name = "script"; path = docpath "ppad-script"; }
+            { name = "tx"; path = docpath "ppad-tx"; }
             { name = "bip32"; path = docpath "ppad-bip32"; }
             { name = "bip39"; path = docpath "ppad-bip39"; }
             { name = "bolt1"; path = docpath "ppad-bolt1"; }
@@ -336,6 +346,7 @@
                 --read-interface=ppad-hkdf,$src/hkdf/ppad-hkdf.haddock \
                 --read-interface=ppad-pbkdf,$src/pbkdf/ppad-pbkdf.haddock \
                 --read-interface=ppad-script,$src/script/ppad-script.haddock \
+                --read-interface=ppad-tx,$src/tx/ppad-tx.haddock \
                 --read-interface=ppad-bip32,$src/bip32/ppad-bip32.haddock \
                 --read-interface=ppad-bip39,$src/bip39/ppad-bip39.haddock \
                 --read-interface=ppad-bolt1,$src/bolt1/ppad-bolt1.haddock \

@@ -1053,6 +1053,43 @@
         "url": "git://git.ppad.tech/sha512.git"
       }
     },
+    "ppad-tx": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-tx",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-tx",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-base16": [
+          "ppad-base16"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-nixpkgs"
+        ],
+        "ppad-sha256": [
+          "ppad-sha256"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776513314,
+        "narHash": "sha256-95aSUiQokIevDABa1smBEZQ6g9njV1KoUoKNr7X7oS4=",
+        "ref": "master",
+        "rev": "7bb595ed894086fcc03e6d42c820fbecd436b3e4",
+        "revCount": 19,
+        "type": "git",
+        "url": "git://git.ppad.tech/tx.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/tx.git"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": [
@@ -1088,7 +1125,8 @@
         "ppad-script": "ppad-script",
         "ppad-secp256k1": "ppad-secp256k1",
         "ppad-sha256": "ppad-sha256",
-        "ppad-sha512": "ppad-sha512"
+        "ppad-sha512": "ppad-sha512",
+        "ppad-tx": "ppad-tx"
       }
     },
     "systems": {
