@@ -515,6 +515,37 @@
         "url": "git://git.ppad.tech/bolt8.git"
       }
     },
+    "ppad-bolt9": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-bolt9",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-bolt9",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776490201,
+        "narHash": "sha256-07izLcL4Bz28cjrr270AV8waAyxyXSr+6IRYZEVXmKs=",
+        "ref": "master",
+        "rev": "39bd0dcf9fe8bd5afba7a873e6f450245a69fe2d",
+        "revCount": 19,
+        "type": "git",
+        "url": "git://git.ppad.tech/bolt9.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/bolt9.git"
+      }
+    },
     "ppad-chacha": {
       "inputs": {
         "flake-utils": [
@@ -1044,6 +1075,7 @@
         "ppad-bolt4": "ppad-bolt4",
         "ppad-bolt7": "ppad-bolt7",
         "ppad-bolt8": "ppad-bolt8",
+        "ppad-bolt9": "ppad-bolt9",
         "ppad-chacha": "ppad-chacha",
         "ppad-csecp256k1": "ppad-csecp256k1",
         "ppad-fixed": "ppad-fixed",
