@@ -199,6 +199,17 @@
       inputs.ppad-secp256k1.follows = "ppad-secp256k1";
       inputs.ppad-sha256.follows = "ppad-sha256";
     };
+    ppad-bolt5 = {
+      type = "git";
+      url  = "git://git.ppad.tech/bolt5.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-sha256.follows = "ppad-sha256";
+      inputs.ppad-secp256k1.follows = "ppad-secp256k1";
+      inputs.ppad-ripemd160.follows = "ppad-ripemd160";
+      inputs.ppad-tx.follows = "ppad-tx";
+      inputs.ppad-bolt3.follows = "ppad-bolt3";
+    };
     ppad-bolt7 = {
       type = "git";
       url  = "git://git.ppad.tech/bolt7.git";
@@ -237,7 +248,7 @@
             , ppad-csecp256k1, ppad-secp256k1
             , ppad-script, ppad-tx, ppad-bip32, ppad-bip39
             , ppad-bolt1, ppad-bolt2, ppad-bolt3
-            , ppad-bolt4, ppad-bolt7, ppad-bolt8, ppad-bolt9
+            , ppad-bolt4, ppad-bolt5, ppad-bolt7, ppad-bolt8, ppad-bolt9
             }:
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -274,6 +285,7 @@
           ppad-bolt2 = hlib.dontCheck ppad-bolt2.packages.${system}.default;
           ppad-bolt3 = hlib.dontCheck ppad-bolt3.packages.${system}.default;
           ppad-bolt4 = hlib.dontCheck ppad-bolt4.packages.${system}.default;
+          ppad-bolt5 = hlib.dontCheck ppad-bolt5.packages.${system}.default;
           ppad-bolt7 = hlib.dontCheck ppad-bolt7.packages.${system}.default;
           ppad-bolt8 = hlib.dontCheck ppad-bolt8.packages.${system}.default;
           ppad-bolt9 = hlib.dontCheck ppad-bolt9.packages.${system}.default;
@@ -307,6 +319,7 @@
             { name = "bolt2"; path = docpath "ppad-bolt2"; }
             { name = "bolt3"; path = docpath "ppad-bolt3"; }
             { name = "bolt4"; path = docpath "ppad-bolt4"; }
+            { name = "bolt5"; path = docpath "ppad-bolt5"; }
             { name = "bolt7"; path = docpath "ppad-bolt7"; }
             { name = "bolt8"; path = docpath "ppad-bolt8"; }
             { name = "bolt9"; path = docpath "ppad-bolt9"; }
@@ -353,6 +366,7 @@
                 --read-interface=ppad-bolt2,$src/bolt2/ppad-bolt2.haddock \
                 --read-interface=ppad-bolt3,$src/bolt3/ppad-bolt3.haddock \
                 --read-interface=ppad-bolt4,$src/bolt4/ppad-bolt4.haddock \
+                --read-interface=ppad-bolt5,$src/bolt5/ppad-bolt5.haddock \
                 --read-interface=ppad-bolt7,$src/bolt7/ppad-bolt7.haddock \
                 --read-interface=ppad-bolt8,$src/bolt8/ppad-bolt8.haddock \
                 --read-interface=ppad-bolt9,$src/bolt9/ppad-bolt9.haddock
