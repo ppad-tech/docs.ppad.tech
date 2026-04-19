@@ -726,11 +726,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776570698,
-        "narHash": "sha256-go9QfvdAJDA9nolMeewEAeyCNMZz7wKKYaOcUEJzPWQ=",
+        "lastModified": 1776574719,
+        "narHash": "sha256-p9HDKis5RT+ANSYyyMqBvmS7gvtdMohaeUAD5WNXuqI=",
         "ref": "master",
-        "rev": "decf50f48cfa23dc0194f2127b3a7adb78d09b55",
-        "revCount": 11,
+        "rev": "56ce6c5246ce245dae96cd3a1d2af8fb538af01d",
+        "revCount": 14,
         "type": "git",
         "url": "git://git.ppad.tech/bolt5.git"
       },
@@ -763,11 +763,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776488521,
-        "narHash": "sha256-n1Dtba8v+QOKb+w19UDJ7i9T7xW/wu+zLhJVdF35csI=",
+        "lastModified": 1776573967,
+        "narHash": "sha256-7qMPdacVq6C9enKrE+1OR2uLejRclJrPdTl1Zd+JlDM=",
         "ref": "master",
-        "rev": "7aa54cabff49e52ca9f4ea94f4e430eb18fd3cc7",
-        "revCount": 34,
+        "rev": "5c5272f7ba961a46826ff390a31b167f2b063b2b",
+        "revCount": 36,
         "type": "git",
         "url": "git://git.ppad.tech/bolt7.git"
       },
