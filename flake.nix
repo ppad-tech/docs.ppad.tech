@@ -54,6 +54,12 @@
       inputs.ppad-base16.follows = "ppad-base16";
       inputs.ppad-sha256.follows = "ppad-sha256";
     };
+    ppad-base64 = {
+      type = "git";
+      url  = "git://git.ppad.tech/base64.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+    };
     ppad-hmac-drbg = {
       type = "git";
       url  = "git://git.ppad.tech/hmac-drbg.git";
@@ -242,7 +248,7 @@
   outputs = { self, nixpkgs, flake-utils, ppad-nixpkgs
             , ppad-fixed
             , ppad-sha256, ppad-sha512, ppad-ripemd160
-            , ppad-bech32, ppad-base58, ppad-base16
+            , ppad-bech32, ppad-base58, ppad-base16, ppad-base64
             , ppad-hmac-drbg, ppad-hkdf, ppad-pbkdf
             , ppad-chacha, ppad-poly1305, ppad-aead
             , ppad-csecp256k1, ppad-secp256k1
@@ -261,6 +267,7 @@
           ppad-sha512 = hlib.dontCheck ppad-sha512.packages.${system}.default;
           ppad-base58 = hlib.dontCheck ppad-base58.packages.${system}.default;
           ppad-base16 = hlib.dontCheck ppad-base16.packages.${system}.default;
+          ppad-base64 = hlib.dontCheck ppad-base64.packages.${system}.default;
           ppad-bech32 = hlib.dontCheck ppad-bech32.packages.${system}.default;
           ppad-ripemd160 = hlib.dontCheck
             ppad-ripemd160.packages.${system}.default;
@@ -301,6 +308,7 @@
             { name = "sha512"; path = docpath "ppad-sha512"; }
             { name = "base58"; path = docpath "ppad-base58"; }
             { name = "base16"; path = docpath "ppad-base16"; }
+            { name = "base64"; path = docpath "ppad-base64"; }
             { name = "bech32"; path = docpath "ppad-bech32"; }
             { name = "ripemd160"; path = docpath "ppad-ripemd160"; }
             { name = "hmac-drbg"; path = docpath "ppad-hmac-drbg"; }
@@ -356,6 +364,7 @@
                 --read-interface=ppad-bech32,$src/bech32/ppad-bech32.haddock \
                 --read-interface=ppad-base58,$src/base58/ppad-base58.haddock \
                 --read-interface=ppad-base16,$src/base16/ppad-base16.haddock \
+                --read-interface=ppad-base64,$src/base64/ppad-base64.haddock \
                 --read-interface=ppad-hkdf,$src/hkdf/ppad-hkdf.haddock \
                 --read-interface=ppad-pbkdf,$src/pbkdf/ppad-pbkdf.haddock \
                 --read-interface=ppad-script,$src/script/ppad-script.haddock \
