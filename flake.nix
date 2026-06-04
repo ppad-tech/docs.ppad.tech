@@ -241,6 +241,18 @@
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
     };
+    ppad-eproc = {
+      type = "git";
+      url  = "git://git.ppad.tech/eproc.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+    };
+    ppad-lmdb = {
+      type = "git";
+      url  = "git://git.ppad.tech/lmdb.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+    };
     flake-utils.follows = "ppad-nixpkgs/flake-utils";
     nixpkgs.follows = "ppad-nixpkgs/nixpkgs";
   };
@@ -255,6 +267,7 @@
             , ppad-script, ppad-tx, ppad-bip32, ppad-bip39
             , ppad-bolt1, ppad-bolt2, ppad-bolt3
             , ppad-bolt4, ppad-bolt5, ppad-bolt7, ppad-bolt8, ppad-bolt9
+            , ppad-eproc, ppad-lmdb
             }:
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -296,6 +309,8 @@
           ppad-bolt7 = hlib.dontCheck ppad-bolt7.packages.${system}.default;
           ppad-bolt8 = hlib.dontCheck ppad-bolt8.packages.${system}.default;
           ppad-bolt9 = hlib.dontCheck ppad-bolt9.packages.${system}.default;
+          ppad-eproc = hlib.dontCheck ppad-eproc.packages.${system}.default;
+          ppad-lmdb = hlib.dontCheck ppad-lmdb.packages.${system}.default;
         });
 
         docpath = name:
@@ -331,6 +346,8 @@
             { name = "bolt7"; path = docpath "ppad-bolt7"; }
             { name = "bolt8"; path = docpath "ppad-bolt8"; }
             { name = "bolt9"; path = docpath "ppad-bolt9"; }
+            { name = "eproc"; path = docpath "ppad-eproc"; }
+            { name = "lmdb"; path = docpath "ppad-lmdb"; }
           ];
 
       in
@@ -378,7 +395,9 @@
                 --read-interface=ppad-bolt5,$src/bolt5/ppad-bolt5.haddock \
                 --read-interface=ppad-bolt7,$src/bolt7/ppad-bolt7.haddock \
                 --read-interface=ppad-bolt8,$src/bolt8/ppad-bolt8.haddock \
-                --read-interface=ppad-bolt9,$src/bolt9/ppad-bolt9.haddock
+                --read-interface=ppad-bolt9,$src/bolt9/ppad-bolt9.haddock \
+                --read-interface=ppad-eproc,$src/eproc/ppad-eproc.haddock \
+                --read-interface=ppad-lmdb,$src/lmdb/ppad-lmdb.haddock
             '';
 
             fixupPhase = ''

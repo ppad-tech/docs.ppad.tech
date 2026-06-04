@@ -956,6 +956,37 @@
         "url": "git://git.ppad.tech/csecp256k1.git"
       }
     },
+    "ppad-eproc": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-eproc",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-eproc",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1780607193,
+        "narHash": "sha256-vVMDsPRzLs+mwMtXwtJqswCpCEGg+jKpWYkxnoltSeA=",
+        "ref": "master",
+        "rev": "8c7d3c072dba28c933e84c15ddff14a8ded14509",
+        "revCount": 19,
+        "type": "git",
+        "url": "git://git.ppad.tech/eproc.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/eproc.git"
+      }
+    },
     "ppad-fixed": {
       "inputs": {
         "flake-utils": [
@@ -1111,6 +1142,37 @@
         "ref": "master",
         "type": "git",
         "url": "git://git.ppad.tech/hmac-drbg.git"
+      }
+    },
+    "ppad-lmdb": {
+      "inputs": {
+        "flake-utils": [
+          "ppad-lmdb",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "ppad-lmdb",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779655815,
+        "narHash": "sha256-XlXojCMJy2UB8rWqD7Wg5vOzFQir/uqnhd4KUwNUOi4=",
+        "ref": "master",
+        "rev": "fcc8fd9b88e6cc81d8a282143cbf09804b6e48c6",
+        "revCount": 7,
+        "type": "git",
+        "url": "git://git.ppad.tech/lmdb.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/lmdb.git"
       }
     },
     "ppad-nixpkgs": {
@@ -1569,9 +1631,11 @@
         "ppad-bolt9": "ppad-bolt9",
         "ppad-chacha": "ppad-chacha",
         "ppad-csecp256k1": "ppad-csecp256k1",
+        "ppad-eproc": "ppad-eproc",
         "ppad-fixed": "ppad-fixed",
         "ppad-hkdf": "ppad-hkdf",
         "ppad-hmac-drbg": "ppad-hmac-drbg_2",
+        "ppad-lmdb": "ppad-lmdb",
         "ppad-nixpkgs": "ppad-nixpkgs",
         "ppad-pbkdf": "ppad-pbkdf",
         "ppad-poly1305": "ppad-poly1305",
