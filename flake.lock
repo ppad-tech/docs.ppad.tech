@@ -60,11 +60,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778957521,
-        "narHash": "sha256-Iw7NxUQB35RJhVuAEFxOLeYEUckRo1aeukSSX6UPJME=",
+        "lastModified": 1780598494,
+        "narHash": "sha256-rJmt+azrNi6UsCEgwQ4r3jwZgtmZqet3HqXlRx3HbIk=",
         "ref": "master",
-        "rev": "d1245f96efb62088904e5a5134fc586ddd149ff9",
-        "revCount": 28,
+        "rev": "6d4e867bcb0d4182b147f03e3985f8b1e815c686",
+        "revCount": 30,
         "type": "git",
         "url": "git://git.ppad.tech/aead.git"
       },
@@ -91,11 +91,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778943993,
-        "narHash": "sha256-8eZyChH7WDgMTj804Ht4VFvS+WER9pPtlwYZgWlO60Q=",
+        "lastModified": 1780597900,
+        "narHash": "sha256-wI9ME6gE+DP+7vLYuWBff3Q9mOM/xX/N0keqJj7dKJQ=",
         "ref": "master",
-        "rev": "480f24d852e100bb87cd69f2eda531bdb1306495",
-        "revCount": 37,
+        "rev": "881ca5128665d5e2207803751054d7d32c4c864c",
+        "revCount": 38,
         "type": "git",
         "url": "git://git.ppad.tech/base16.git"
       },
@@ -347,11 +347,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778946095,
-        "narHash": "sha256-qHpRn1MNbGrFKaMktRiBrYDq52ySuczrgtegE0Kh2KI=",
+        "lastModified": 1780597912,
+        "narHash": "sha256-0Bc92CvGzeGagRHarBK6av9sH9TeDBKhgtZHd8z+Bg0=",
         "ref": "master",
-        "rev": "690785db542a958976fe289044f612a240a2cc9e",
-        "revCount": 13,
+        "rev": "cb0218f2b37d760292a8396da743ef3377a397b4",
+        "revCount": 14,
         "type": "git",
         "url": "git://git.ppad.tech/base64.git"
       },
@@ -378,11 +378,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766936887,
-        "narHash": "sha256-X/T8LBWczPn1F4VJyRhrZuzAbM0ydYhCC1FZoLHmBw4=",
+        "lastModified": 1780597926,
+        "narHash": "sha256-eCJuiTeioi9PIs20pPdbEJXGzCz6bOwOypyS0m1T1bs=",
         "ref": "master",
-        "rev": "55f351f4c17608f6c384cddc4112418f1409674a",
-        "revCount": 72,
+        "rev": "7b6bfc359adb5f1b9eda4301ab835af41b0b2fe7",
+        "revCount": 80,
         "type": "git",
         "url": "git://git.ppad.tech/bech32.git"
       },
@@ -658,11 +658,11 @@
         "ppad-tx": "ppad-tx_2"
       },
       "locked": {
-        "lastModified": 1777091311,
-        "narHash": "sha256-ME8oLSeO+ls1riPzjf0L/OArity7ZU6HaEN0EjKBRDY=",
+        "lastModified": 1779053092,
+        "narHash": "sha256-pfpxV5Q9NToRFwvsuy2TirSnTVZVOoCKiRihCq1+ku4=",
         "ref": "master",
-        "rev": "f7f15ccf1061b984962a1bef9b235a910be93098",
-        "revCount": 48,
+        "rev": "1f1391135fa7e882e21fe74b040e1b48ca9624ae",
+        "revCount": 52,
         "type": "git",
         "url": "git://git.ppad.tech/bolt3.git"
       },
@@ -840,11 +840,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778948917,
-        "narHash": "sha256-2dqMoN+kSmazKP5dfGG08tfhjbuWkwhb9y58OGi4r1o=",
+        "lastModified": 1780177918,
+        "narHash": "sha256-Xy6beyxvLWsAQsCEIGTLOwz3kop65aEQQ5XexmIFeiQ=",
         "ref": "master",
-        "rev": "0ebdc0a6971d76db967d4130674f9d5dbf05df5c",
-        "revCount": 36,
+        "rev": "36d98aeef267b1acc8cfc9167c9a6485767df414",
+        "revCount": 38,
         "type": "git",
         "url": "git://git.ppad.tech/bolt8.git"
       },
@@ -905,11 +905,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778948923,
-        "narHash": "sha256-4VT0GyOo4+j/bJx0uohUk1hSXSB/zMVCpIS7Rz8uiMw=",
+        "lastModified": 1780598424,
+        "narHash": "sha256-wQdYh0h/8FWOD1KiOiAELLnxDjoFvbY0BN7HKNGGY7k=",
         "ref": "master",
-        "rev": "2a8b36ff025a77cd10940ed2e273bab1203af846",
-        "revCount": 34,
+        "rev": "fa682db3adf2b2fc83d1e5fd1da4588dab50157d",
+        "revCount": 35,
         "type": "git",
         "url": "git://git.ppad.tech/chacha.git"
       },
@@ -1004,11 +1004,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767278248,
-        "narHash": "sha256-ynF6Tyew83dDr3dFWdTdgK3N5WEkLSCQ/uHHTxb5J1s=",
+        "lastModified": 1780597966,
+        "narHash": "sha256-TbbKDxBraF9WbkaKDXNpRRjeumr6GRMZl6LhSkdu5iE=",
         "ref": "master",
-        "rev": "ae6f5d732d69e6e2bb70ea9da18e2a8060ca9aeb",
-        "revCount": 290,
+        "rev": "e396a7f0d97471e8a9c19ac83f3d3366c3300a4e",
+        "revCount": 294,
         "type": "git",
         "url": "git://git.ppad.tech/fixed.git"
       },
@@ -1258,11 +1258,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778948958,
-        "narHash": "sha256-vuroggP/yEuE+zqdACQMAeSR8XVKrCs/+rLXaGofG/w=",
+        "lastModified": 1780598398,
+        "narHash": "sha256-h7CB9KsFEqSWglXkakIQzDD+BhoefRVpppQSwtMvQHI=",
         "ref": "master",
-        "rev": "a0a1e67bd9f37b5d2ba97f0d092766132f531d1b",
-        "revCount": 36,
+        "rev": "f1bfda4ddeea526b1991b0ad425117a980e63d09",
+        "revCount": 37,
         "type": "git",
         "url": "git://git.ppad.tech/poly1305.git"
       },
@@ -1372,11 +1372,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778948972,
-        "narHash": "sha256-h3cR3E/aGE7v1kcWjMFI+4LXuYMhzXEFIadVRjZ7UvY=",
+        "lastModified": 1779457185,
+        "narHash": "sha256-fXS9nNzgF4JSe589GJjxbh07ubpQbLnEiRc2QnC/eHY=",
         "ref": "master",
-        "rev": "a9d57ae1f50e8a2cb0e87dcf04d26089a79ef434",
-        "revCount": 251,
+        "rev": "6e7966341c1bc5fa1feb333570a05c97e34a6b7e",
+        "revCount": 255,
         "type": "git",
         "url": "git://git.ppad.tech/secp256k1.git"
       },
@@ -1590,11 +1590,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778949087,
-        "narHash": "sha256-swGitNG3KF2SpkXkl9O6I53n4/15oEiGUyKQH8OxF3Y=",
+        "lastModified": 1779042350,
+        "narHash": "sha256-ynzdGYMm5+lCyYnEtW3PXLkI8rlojvEadfdSNdt39R0=",
         "ref": "master",
-        "rev": "b8ac52c57913728e7179337b2866aea58f330356",
-        "revCount": 22,
+        "rev": "5b329e71938d87190c7ae18b072206cd607633db",
+        "revCount": 29,
         "type": "git",
         "url": "git://git.ppad.tech/tx.git"
       },
