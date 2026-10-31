@@ -432,7 +432,7 @@
 
               # rewrite nix store paths to relative paths for ppad-* deps
               for f in $(find $out -name "*.html"); do
-                sed -i 's|file:///nix/store/[^-]*-ppad-\([^-]*\)-[^/]*/share/doc/ppad-[^/]*/html/|../\1/|g' "$f"
+                sed -i 's|file:///nix/store/[^/]*/share/doc/ppad-\([a-z0-9-]*\)-[0-9][0-9.]*/html/|../\1/|g' "$f"
               done
             '';
           };
