@@ -269,6 +269,12 @@
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
       inputs.ppad-eproc.follows = "ppad-eproc";
     };
+    vestigia = {
+      type = "git";
+      url  = "git://git.ppad.tech/vestigia.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+    };
     ppad-lmdb = {
       type = "git";
       url  = "git://git.ppad.tech/lmdb.git";
@@ -289,7 +295,7 @@
             , ppad-script, ppad-tx, ppad-bip32, ppad-bip39
             , ppad-bolt1, ppad-bolt2, ppad-bolt3
             , ppad-bolt4, ppad-bolt5, ppad-bolt7, ppad-bolt8, ppad-bolt9
-            , ppad-eproc, ppad-censor, ppad-lmdb
+            , ppad-eproc, ppad-censor, vestigia, ppad-lmdb
             }:
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -334,6 +340,10 @@
           ppad-eproc = hlib.dontCheck ppad-eproc.packages.${system}.default;
           ppad-censor = hlib.dontCheck
             ppad-censor.packages.${system}.default;
+          vestigia = hlib.dontCheck
+            (import "${vestigia}/nix/lib.nix" {
+              inherit pkgs;
+            }).hpkgs.vestigia;
           ppad-lmdb = hlib.dontCheck ppad-lmdb.packages.${system}.default;
         });
 
@@ -372,6 +382,7 @@
             { name = "bolt9"; path = docpath "ppad-bolt9"; }
             { name = "eproc"; path = docpath "ppad-eproc"; }
             { name = "censor"; path = docpath "ppad-censor"; }
+            { name = "vestigia"; path = docpath "vestigia"; }
             { name = "lmdb"; path = docpath "ppad-lmdb"; }
           ];
 
@@ -423,6 +434,7 @@
                 --read-interface=ppad-bolt9,$src/bolt9/ppad-bolt9.haddock \
                 --read-interface=ppad-eproc,$src/eproc/ppad-eproc.haddock \
                 --read-interface=ppad-censor,$src/censor/ppad-censor.haddock \
+                --read-interface=vestigia,$src/vestigia/vestigia.haddock \
                 --read-interface=ppad-lmdb,$src/lmdb/ppad-lmdb.haddock
             '';
 
