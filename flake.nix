@@ -142,6 +142,7 @@
       inputs.ppad-secp256k1.follows = "ppad-secp256k1";
       inputs.ppad-sha256.follows = "ppad-sha256";
       inputs.ppad-sha512.follows = "ppad-sha512";
+      inputs.ppad-hmac-drbg.follows = "ppad-hmac-drbg";
     };
     ppad-bip39 = {
       type = "git";
@@ -175,6 +176,7 @@
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
       inputs.ppad-base16.follows = "ppad-base16";
+      inputs.ppad-bolt9.follows = "ppad-bolt9";
     };
     ppad-bolt2 = {
       type = "git";
@@ -182,6 +184,8 @@
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
       inputs.ppad-bolt1.follows = "ppad-bolt1";
+      inputs.ppad-bolt9.follows = "ppad-bolt9";
+      inputs.ppad-tx.follows = "ppad-tx";
     };
     ppad-bolt3 = {
       type = "git";
@@ -191,6 +195,10 @@
       inputs.ppad-sha256.follows = "ppad-sha256";
       inputs.ppad-secp256k1.follows = "ppad-secp256k1";
       inputs.ppad-ripemd160.follows = "ppad-ripemd160";
+      inputs.ppad-bolt1.follows = "ppad-bolt1";
+      inputs.ppad-bolt9.follows = "ppad-bolt9";
+      inputs.ppad-fixed.follows = "ppad-fixed";
+      inputs.ppad-tx.follows = "ppad-tx";
     };
     ppad-bolt4 = {
       type = "git";
@@ -204,6 +212,8 @@
       inputs.ppad-hmac-drbg.follows = "ppad-hmac-drbg";
       inputs.ppad-secp256k1.follows = "ppad-secp256k1";
       inputs.ppad-sha256.follows = "ppad-sha256";
+      inputs.ppad-bolt1.follows = "ppad-bolt1";
+      inputs.ppad-bolt9.follows = "ppad-bolt9";
     };
     ppad-bolt5 = {
       type = "git";
@@ -215,6 +225,9 @@
       inputs.ppad-ripemd160.follows = "ppad-ripemd160";
       inputs.ppad-tx.follows = "ppad-tx";
       inputs.ppad-bolt3.follows = "ppad-bolt3";
+      inputs.ppad-fixed.follows = "ppad-fixed";
+      inputs.ppad-bolt1.follows = "ppad-bolt1";
+      inputs.ppad-bolt9.follows = "ppad-bolt9";
     };
     ppad-bolt7 = {
       type = "git";
@@ -223,6 +236,8 @@
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
       inputs.ppad-bolt1.follows = "ppad-bolt1";
       inputs.ppad-sha256.follows = "ppad-sha256";
+      inputs.ppad-bolt9.follows = "ppad-bolt9";
+      inputs.ppad-secp256k1.follows = "ppad-secp256k1";
     };
     ppad-bolt8 = {
       type = "git";
@@ -247,6 +262,13 @@
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
     };
+    ppad-censor = {
+      type = "git";
+      url  = "git://git.ppad.tech/censor.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-eproc.follows = "ppad-eproc";
+    };
     ppad-lmdb = {
       type = "git";
       url  = "git://git.ppad.tech/lmdb.git";
@@ -267,7 +289,7 @@
             , ppad-script, ppad-tx, ppad-bip32, ppad-bip39
             , ppad-bolt1, ppad-bolt2, ppad-bolt3
             , ppad-bolt4, ppad-bolt5, ppad-bolt7, ppad-bolt8, ppad-bolt9
-            , ppad-eproc, ppad-lmdb
+            , ppad-eproc, ppad-censor, ppad-lmdb
             }:
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -310,6 +332,8 @@
           ppad-bolt8 = hlib.dontCheck ppad-bolt8.packages.${system}.default;
           ppad-bolt9 = hlib.dontCheck ppad-bolt9.packages.${system}.default;
           ppad-eproc = hlib.dontCheck ppad-eproc.packages.${system}.default;
+          ppad-censor = hlib.dontCheck
+            ppad-censor.packages.${system}.default;
           ppad-lmdb = hlib.dontCheck ppad-lmdb.packages.${system}.default;
         });
 
@@ -347,6 +371,7 @@
             { name = "bolt8"; path = docpath "ppad-bolt8"; }
             { name = "bolt9"; path = docpath "ppad-bolt9"; }
             { name = "eproc"; path = docpath "ppad-eproc"; }
+            { name = "censor"; path = docpath "ppad-censor"; }
             { name = "lmdb"; path = docpath "ppad-lmdb"; }
           ];
 
@@ -397,6 +422,7 @@
                 --read-interface=ppad-bolt8,$src/bolt8/ppad-bolt8.haddock \
                 --read-interface=ppad-bolt9,$src/bolt9/ppad-bolt9.haddock \
                 --read-interface=ppad-eproc,$src/eproc/ppad-eproc.haddock \
+                --read-interface=ppad-censor,$src/censor/ppad-censor.haddock \
                 --read-interface=ppad-lmdb,$src/lmdb/ppad-lmdb.haddock
             '';
 
