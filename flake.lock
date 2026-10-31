@@ -1302,7 +1302,8 @@
         "ppad-secp256k1": "ppad-secp256k1",
         "ppad-sha256": "ppad-sha256",
         "ppad-sha512": "ppad-sha512",
-        "ppad-tx": "ppad-tx"
+        "ppad-tx": "ppad-tx",
+        "vestigia": "vestigia"
       }
     },
     "systems": {
@@ -1318,6 +1319,37 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "vestigia": {
+      "inputs": {
+        "flake-utils": [
+          "vestigia",
+          "ppad-nixpkgs",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "vestigia",
+          "ppad-nixpkgs",
+          "nixpkgs"
+        ],
+        "ppad-nixpkgs": [
+          "ppad-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793438600,
+        "narHash": "sha256-RUWdsBz6aRT31kHKRRWflIeGLys3IMUiV01ox0ahzmw=",
+        "ref": "master",
+        "rev": "13cb016c38aa7391ec85013a7c78e008581b969e",
+        "revCount": 56,
+        "type": "git",
+        "url": "git://git.ppad.tech/vestigia.git"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "git://git.ppad.tech/vestigia.git"
       }
     }
   },
