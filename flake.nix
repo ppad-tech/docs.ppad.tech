@@ -396,6 +396,14 @@
 
               mv $out/index.html $out/modules.html
               cp ${landing} $out/index.html
+
+              # a dark theme: every copy of haddock's stylesheets, GHC's
+              # included, gets the overrides in dark/
+              for css in linuwial.css quick-jump.css src/style.css; do
+                find $out -path "*/$css" -type f | while read -r f; do
+                  cat ${./dark}/$(basename $css) >> "$f"
+                done
+              done
             '';
 
             fixupPhase = ''

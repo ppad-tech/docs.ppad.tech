@@ -1,0 +1,28 @@
+/* A dark theme, appended to each copy of haddock's src/style.css,
+   the hyperlinked source view. */
+
+html { color-scheme: dark; }
+body { background-color: #17161c; color: #dcdbe3; }
+
+.hs-identifier { color: #dcdbe3; }
+.hs-identifier.hs-type { color: #a9a4f0; }
+.hs-keyword { color: #e8799f; }
+.hs-string, .hs-char { color: #e8a05f; }
+.hs-number { color: #6cb6ff; }
+.hs-operator { color: #e57fb4; }
+.hs-glyph, .hs-special { color: #f07b78; }
+.hs-comment { color: #8a8896; }
+.hs-pragma { color: #4fc1b6; }
+.hs-cpp { color: #b5c45a; }
+
+a:link, a:visited { border-bottom: 1px solid #34323d; }
+a:hover, a.hover-highlight { background-color: #2c2a34; }
+
+span.annot { color: #dcdbe3; }
+span.annot:hover { background-color: #4a4220; }
+span.annot span.annottext {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  background: #2c2a34;
+  border: 2px solid #8a6d2a;
+  color: #dcdbe3;
+}

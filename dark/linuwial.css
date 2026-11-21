@@ -1,0 +1,63 @@
+/* A dark theme, appended to each copy of haddock's linuwial.css. */
+
+html { color-scheme: dark; background-color: #17161c; }
+body { background: #17161c; color: #dcdbe3; }
+
+a[href]:link { color: #e08bd3; }
+a[href]:visited { color: #a99bd8; }
+a[href].def:link, a[href].def:visited { color: #c9c2e6; }
+a[href].def:hover { color: #9fb6c8; }
+
+.caption, h1, h2, h3, h4, h5, h6, summary { color: #b4a5e6; }
+.collapser:before, .expander:before, .noexpander:before {
+  color: #c98bc0;
+}
+
+#package-header {
+  background: #2b2540;
+  border-bottom: 5px solid #3d3458;
+  color: #d6d2e6;
+}
+#package-header .caption { color: #fff; }
+#package-header #page-menu a:link,
+#package-header #page-menu a:visited { color: #fff; }
+
+#module-header .caption { border-bottom: 1px solid #34323d; }
+
+pre { background-color: #201f27; border: 1px solid #34323d; }
+blockquote { border-left: 3px solid #6b5a8a; background-color: #221f2b; }
+.src { background: #201f27; }
+
+table.info {
+  border: 1px solid #34323d;
+  color: #9fb6c8;
+  background-color: #1b1a21;
+}
+
+#footer {
+  background: #1d1c23;
+  border-top: 1px solid #34323d;
+  color: #9a98a6;
+}
+
+#contents-list { background: #201f27; }
+#synopsis .show { border: 1px solid #4b4170; }
+#synopsis ul, #synopsis ul li.src { background-color: #23222b; }
+
+#interface .src .selflink, #interface .src .link { color: #8a8896; }
+#interface span.fixity { color: #8a8896; border-left: 1px solid #8a8896; }
+#interface span.rightedge { border-left: 1px solid #8a8896; }
+
+.doc th, .doc td { border: 1px solid #34323d; }
+.doc th { background-color: #26252e; }
+.subs .subs p.src { background-color: #1d1c23; }
+.top p.src { border-bottom: 3px solid #2c2a34; }
+
+:target {
+  background: linear-gradient(to bottom, transparent 0%,
+    transparent 65%, #6b5a1e 60%, #6b5a1e 100%);
+}
+:target:hover {
+  background: linear-gradient(to bottom, transparent 0%,
+    transparent 0%, #6b5a1e 0%, #6b5a1e 100%);
+}

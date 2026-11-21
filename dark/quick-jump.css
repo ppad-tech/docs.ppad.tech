@@ -1,0 +1,29 @@
+/* A dark theme, appended to each copy of haddock's quick-jump.css. */
+
+#search-form, #search-results { box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6); }
+#search-form input {
+  border: 0.05em solid #4a4858;
+  background: #201f27;
+  color: #dcdbe3;
+}
+#search p.error { color: #e07a7a; }
+
+#search-results { border: 0.05em solid #34323d; background: #1d1c23; }
+#search-results > ul > li { border-bottom: 1px solid #2c2a34; }
+.search-module > ul > li > a[href].active-link { background: #3a3424; }
+.search-result ul.subs::after { color: #9fb6c8; }
+
+.more-results { color: #8fb0cc; }
+.more-results::before { color: #4a4858; }
+
+.keyboard-shortcuts th { color: #9fb6c8; }
+.key { background: #2c2a34; border: 1px solid #4a4858; }
+
+.dropdown-menu { border: 0.05em solid #34323d; background: #1d1c23; }
+.dropdown-menu button {
+  border: 1px #4b4170 solid;
+  background: #3d3458;
+  color: #dcdbe3;
+}
+.dropdown-menu button:hover { color: #b4a5e6; background: #26252e; }
+.dropdown-menu button:active { color: #dcdbe3; background: #3d3458; }

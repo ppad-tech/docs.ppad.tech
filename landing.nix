@@ -46,7 +46,7 @@ in
         padding: 0.25em 0;
       }
       ul.packages .version {
-        color: #666;
+        color: #9a98a6;
         font-variant-numeric: tabular-nums;
       }
       @media only screen and (max-width: 600px) {
