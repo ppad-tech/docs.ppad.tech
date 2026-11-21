@@ -401,6 +401,7 @@
               # included, gets the overrides in dark/
               for css in linuwial.css quick-jump.css src/style.css; do
                 find $out -path "*/$css" -type f | while read -r f; do
+                  chmod u+w "$f"
                   cat ${./dark}/$(basename $css) >> "$f"
                 done
               done
