@@ -69,6 +69,14 @@
       inputs.ppad-sha256.follows = "ppad-sha256";
       inputs.ppad-sha512.follows = "ppad-sha512";
     };
+    ppad-random = {
+      type = "git";
+      url  = "git://git.ppad.tech/random.git";
+      ref  = "master";
+      inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-base16.follows = "ppad-base16";
+      inputs.ppad-chacha.follows = "ppad-chacha";
+    };
     ppad-chacha = {
       type = "git";
       url  = "git://git.ppad.tech/chacha.git";
@@ -261,6 +269,7 @@
       url  = "git://git.ppad.tech/eproc.git";
       ref  = "master";
       inputs.ppad-nixpkgs.follows = "ppad-nixpkgs";
+      inputs.ppad-random.follows = "ppad-random";
     };
     ppad-censor = {
       type = "git";
@@ -289,7 +298,7 @@
             , ppad-fixed
             , ppad-sha256, ppad-sha512, ppad-ripemd160
             , ppad-bech32, ppad-base58, ppad-base16, ppad-base64
-            , ppad-hmac-drbg, ppad-hkdf, ppad-pbkdf
+            , ppad-hmac-drbg, ppad-random, ppad-hkdf, ppad-pbkdf
             , ppad-chacha, ppad-poly1305, ppad-aead
             , ppad-csecp256k1, ppad-secp256k1
             , ppad-script, ppad-tx, ppad-bip32, ppad-bip39
@@ -319,6 +328,8 @@
             ppad-poly1305.packages.${system}.default;
           ppad-hmac-drbg = hlib.dontCheck
             ppad-hmac-drbg.packages.${system}.default;
+          ppad-random = hlib.dontCheck
+            ppad-random.packages.${system}.default;
           ppad-hkdf = hlib.dontCheck ppad-hkdf.packages.${system}.default;
           ppad-pbkdf = hlib.dontCheck ppad-pbkdf.packages.${system}.default;
           ppad-csecp256k1 = hlib.dontCheck
@@ -361,6 +372,7 @@
             { name = "bech32"; path = docpath "ppad-bech32"; }
             { name = "ripemd160"; path = docpath "ppad-ripemd160"; }
             { name = "hmac-drbg"; path = docpath "ppad-hmac-drbg"; }
+            { name = "random"; path = docpath "ppad-random"; }
             { name = "aead"; path = docpath "ppad-aead"; }
             { name = "chacha"; path = docpath "ppad-chacha"; }
             { name = "poly1305"; path = docpath "ppad-poly1305"; }
@@ -412,6 +424,7 @@
                 --read-interface=ppad-chacha,$src/chacha/ppad-chacha.haddock \
                 --read-interface=ppad-poly1305,$src/poly1305/ppad-poly1305.haddock \
                 --read-interface=ppad-hmac-drbg,$src/hmac-drbg/ppad-hmac-drbg.haddock \
+                --read-interface=ppad-random,$src/random/ppad-random.haddock \
                 --read-interface=ppad-csecp256k1,$src/csecp256k1/ppad-csecp256k1.haddock \
                 --read-interface=ppad-secp256k1,$src/secp256k1/ppad-secp256k1.haddock \
                 --read-interface=ppad-bech32,$src/bech32/ppad-bech32.haddock \
