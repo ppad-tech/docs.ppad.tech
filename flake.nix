@@ -324,8 +324,10 @@
               "ppad-script" "ppad-tx"
               "ppad-bolt1" "ppad-bolt2" "ppad-bolt3" "ppad-bolt4"
               "ppad-bolt5" "ppad-bolt7" "ppad-bolt8" "ppad-bolt9"
-              "ppad-lmdb"
             ];
+          }
+          { title = "Other";
+            packages = [ "ppad-lmdb" ];
           }
         ];
 
