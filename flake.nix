@@ -294,111 +294,85 @@
     nixpkgs.follows = "ppad-nixpkgs/nixpkgs";
   };
 
-  outputs = { self, nixpkgs, flake-utils, ppad-nixpkgs
-            , ppad-fixed
-            , ppad-sha256, ppad-sha512, ppad-ripemd160
-            , ppad-bech32, ppad-base58, ppad-base16, ppad-base64
-            , ppad-hmac-drbg, ppad-random, ppad-hkdf, ppad-pbkdf
-            , ppad-chacha, ppad-poly1305, ppad-aead
-            , ppad-csecp256k1, ppad-secp256k1
-            , ppad-script, ppad-tx, ppad-bip32, ppad-bip39
-            , ppad-bolt1, ppad-bolt2, ppad-bolt3
-            , ppad-bolt4, ppad-bolt5, ppad-bolt7, ppad-bolt8, ppad-bolt9
-            , ppad-eproc, ppad-censor, vestigia, ppad-lmdb
-            }:
+  outputs = { self, nixpkgs, flake-utils, ... }@inputs:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
+        lib = pkgs.lib;
         hlib = pkgs.haskell.lib;
 
-        hpkgs = pkgs.haskell.packages.ghc910.extend (new: old: {
-          ppad-fixed = hlib.dontCheck ppad-fixed.packages.${system}.default;
-          ppad-sha256 = hlib.dontCheck ppad-sha256.packages.${system}.default;
-          ppad-sha512 = hlib.dontCheck ppad-sha512.packages.${system}.default;
-          ppad-base58 = hlib.dontCheck ppad-base58.packages.${system}.default;
-          ppad-base16 = hlib.dontCheck ppad-base16.packages.${system}.default;
-          ppad-base64 = hlib.dontCheck ppad-base64.packages.${system}.default;
-          ppad-bech32 = hlib.dontCheck ppad-bech32.packages.${system}.default;
-          ppad-ripemd160 = hlib.dontCheck
-            ppad-ripemd160.packages.${system}.default;
-          ppad-aead = hlib.dontCheck ppad-aead.packages.${system}.default;
-          ppad-chacha = hlib.dontCheck
-            ppad-chacha.packages.${system}.default;
-          ppad-poly1305 = hlib.dontCheck
-            ppad-poly1305.packages.${system}.default;
-          ppad-hmac-drbg = hlib.dontCheck
-            ppad-hmac-drbg.packages.${system}.default;
-          ppad-random = hlib.dontCheck
-            ppad-random.packages.${system}.default;
-          ppad-hkdf = hlib.dontCheck ppad-hkdf.packages.${system}.default;
-          ppad-pbkdf = hlib.dontCheck ppad-pbkdf.packages.${system}.default;
-          ppad-csecp256k1 = hlib.dontCheck
-            ppad-csecp256k1.packages.${system}.default;
-          ppad-secp256k1 = hlib.dontCheck
-            ppad-secp256k1.packages.${system}.default;
-          ppad-script = hlib.dontCheck ppad-script.packages.${system}.default;
-          ppad-tx = hlib.dontCheck ppad-tx.packages.${system}.default;
-          ppad-bip32 = hlib.dontCheck ppad-bip32.packages.${system}.default;
-          ppad-bip39 = hlib.dontCheck ppad-bip39.packages.${system}.default;
-          ppad-bolt1 = hlib.dontCheck ppad-bolt1.packages.${system}.default;
-          ppad-bolt2 = hlib.dontCheck ppad-bolt2.packages.${system}.default;
-          ppad-bolt3 = hlib.dontCheck ppad-bolt3.packages.${system}.default;
-          ppad-bolt4 = hlib.dontCheck ppad-bolt4.packages.${system}.default;
-          ppad-bolt5 = hlib.dontCheck ppad-bolt5.packages.${system}.default;
-          ppad-bolt7 = hlib.dontCheck ppad-bolt7.packages.${system}.default;
-          ppad-bolt8 = hlib.dontCheck ppad-bolt8.packages.${system}.default;
-          ppad-bolt9 = hlib.dontCheck ppad-bolt9.packages.${system}.default;
-          ppad-eproc = hlib.dontCheck ppad-eproc.packages.${system}.default;
-          ppad-censor = hlib.dontCheck
-            ppad-censor.packages.${system}.default;
-          vestigia = hlib.dontCheck
-            (import "${vestigia}/nix/lib.nix" {
-              inherit pkgs;
-            }).hpkgs.vestigia;
-          ppad-lmdb = hlib.dontCheck ppad-lmdb.packages.${system}.default;
-        });
+        # every package on the site, under its landing page heading
+        groups = [
+          { title = "Constant-time toolchain";
+            packages = [ "ppad-censor" "vestigia" "ppad-eproc" ];
+          }
+          { title = "Cryptography";
+            packages = [
+              "ppad-fixed" "ppad-sha256" "ppad-sha512" "ppad-ripemd160"
+              "ppad-chacha" "ppad-poly1305" "ppad-aead" "ppad-hkdf"
+              "ppad-pbkdf" "ppad-hmac-drbg" "ppad-random"
+              "ppad-secp256k1" "ppad-csecp256k1" "ppad-bip32" "ppad-bip39"
+            ];
+          }
+          { title = "Encoding";
+            packages = [
+              "ppad-base16" "ppad-base58" "ppad-base64" "ppad-bech32"
+            ];
+          }
+          { title = "Bitcoin and Lightning";
+            packages = [
+              "ppad-script" "ppad-tx"
+              "ppad-bolt1" "ppad-bolt2" "ppad-bolt3" "ppad-bolt4"
+              "ppad-bolt5" "ppad-bolt7" "ppad-bolt8" "ppad-bolt9"
+              "ppad-lmdb"
+            ];
+          }
+        ];
+
+        names = lib.concatMap (g: g.packages) groups;
+
+        # the directory a package is served from
+        dir = lib.removePrefix "ppad-";
+
+        hpkgs = pkgs.haskell.packages.ghc910.extend (new: old:
+          lib.genAttrs (lib.filter (lib.hasPrefix "ppad-") names) (name:
+            hlib.dontCheck inputs.${name}.packages.${system}.default)
+          // {
+            # vestigia's default package is its wrapped command; the
+            # Haskell package, with its haddock, is in its nix/lib.nix
+            vestigia = hlib.dontCheck
+              (import "${inputs.vestigia}/nix/lib.nix" {
+                inherit pkgs;
+              }).hpkgs.vestigia;
+          });
 
         docpath = name:
           let doc = hpkgs.${name}.doc;
           in  "${doc}/share/doc/${name}-${hpkgs.${name}.version}/html";
 
-        docs = pkgs.linkFarm "docs.ppad.tech" [
-            { name = "fixed"; path = docpath "ppad-fixed"; }
-            { name = "sha256"; path = docpath "ppad-sha256"; }
-            { name = "sha512"; path = docpath "ppad-sha512"; }
-            { name = "base58"; path = docpath "ppad-base58"; }
-            { name = "base16"; path = docpath "ppad-base16"; }
-            { name = "base64"; path = docpath "ppad-base64"; }
-            { name = "bech32"; path = docpath "ppad-bech32"; }
-            { name = "ripemd160"; path = docpath "ppad-ripemd160"; }
-            { name = "hmac-drbg"; path = docpath "ppad-hmac-drbg"; }
-            { name = "random"; path = docpath "ppad-random"; }
-            { name = "aead"; path = docpath "ppad-aead"; }
-            { name = "chacha"; path = docpath "ppad-chacha"; }
-            { name = "poly1305"; path = docpath "ppad-poly1305"; }
-            { name = "hkdf"; path = docpath "ppad-hkdf"; }
-            { name = "pbkdf"; path = docpath "ppad-pbkdf"; }
-            { name = "csecp256k1"; path = docpath "ppad-csecp256k1"; }
-            { name = "secp256k1"; path = docpath "ppad-secp256k1"; }
-            { name = "script"; path = docpath "ppad-script"; }
-            { name = "tx"; path = docpath "ppad-tx"; }
-            { name = "bip32"; path = docpath "ppad-bip32"; }
-            { name = "bip39"; path = docpath "ppad-bip39"; }
-            { name = "bolt1"; path = docpath "ppad-bolt1"; }
-            { name = "bolt2"; path = docpath "ppad-bolt2"; }
-            { name = "bolt3"; path = docpath "ppad-bolt3"; }
-            { name = "bolt4"; path = docpath "ppad-bolt4"; }
-            { name = "bolt5"; path = docpath "ppad-bolt5"; }
-            { name = "bolt7"; path = docpath "ppad-bolt7"; }
-            { name = "bolt8"; path = docpath "ppad-bolt8"; }
-            { name = "bolt9"; path = docpath "ppad-bolt9"; }
-            { name = "eproc"; path = docpath "ppad-eproc"; }
-            { name = "censor"; path = docpath "ppad-censor"; }
-            { name = "vestigia"; path = docpath "vestigia"; }
-            { name = "lmdb"; path = docpath "ppad-lmdb"; }
-          ];
+        docs = pkgs.linkFarm "docs.ppad.tech"
+          (map (name: { name = dir name; path = docpath name; }) names);
 
+        # each interface is read from its copy in $out, so the combined
+        # contents, indexes, and search link to it relative to the root
+        interfaces = lib.concatMapStringsSep " " (name:
+          "--read-interface=${dir name},$out/${dir name}/${name}.haddock")
+          names;
+
+        landing = import ./landing.nix {
+          inherit lib groups dir hpkgs;
+          inherit (pkgs) writeText;
+        };
+
+        # an input left out of groups would be left off the site
+        served = lib.subtractLists
+          [ "self" "nixpkgs" "flake-utils" "ppad-nixpkgs" ]
+          (builtins.attrNames inputs);
       in
+        assert lib.assertMsg
+          (builtins.sort builtins.lessThan served
+            == builtins.sort builtins.lessThan names)
+          "each package input must appear exactly once in groups";
         {
           packages.default = pkgs.stdenv.mkDerivation {
             name = "docs.ppad.tech";
@@ -416,45 +390,13 @@
               chmod -R u+w $out
 
               haddock -o "$out" --quickjump --gen-index --gen-contents \
-                --read-interface=ppad-fixed,$src/fixed/ppad-fixed.haddock \
-                --read-interface=ppad-sha256,$src/sha256/ppad-sha256.haddock \
-                --read-interface=ppad-sha512,$src/sha512/ppad-sha512.haddock \
-                --read-interface=ppad-ripemd160,$src/ripemd160/ppad-ripemd160.haddock \
-                --read-interface=ppad-aead,$src/aead/ppad-aead.haddock \
-                --read-interface=ppad-chacha,$src/chacha/ppad-chacha.haddock \
-                --read-interface=ppad-poly1305,$src/poly1305/ppad-poly1305.haddock \
-                --read-interface=ppad-hmac-drbg,$src/hmac-drbg/ppad-hmac-drbg.haddock \
-                --read-interface=ppad-random,$src/random/ppad-random.haddock \
-                --read-interface=ppad-csecp256k1,$src/csecp256k1/ppad-csecp256k1.haddock \
-                --read-interface=ppad-secp256k1,$src/secp256k1/ppad-secp256k1.haddock \
-                --read-interface=ppad-bech32,$src/bech32/ppad-bech32.haddock \
-                --read-interface=ppad-base58,$src/base58/ppad-base58.haddock \
-                --read-interface=ppad-base16,$src/base16/ppad-base16.haddock \
-                --read-interface=ppad-base64,$src/base64/ppad-base64.haddock \
-                --read-interface=ppad-hkdf,$src/hkdf/ppad-hkdf.haddock \
-                --read-interface=ppad-pbkdf,$src/pbkdf/ppad-pbkdf.haddock \
-                --read-interface=ppad-script,$src/script/ppad-script.haddock \
-                --read-interface=ppad-tx,$src/tx/ppad-tx.haddock \
-                --read-interface=ppad-bip32,$src/bip32/ppad-bip32.haddock \
-                --read-interface=ppad-bip39,$src/bip39/ppad-bip39.haddock \
-                --read-interface=ppad-bolt1,$src/bolt1/ppad-bolt1.haddock \
-                --read-interface=ppad-bolt2,$src/bolt2/ppad-bolt2.haddock \
-                --read-interface=ppad-bolt3,$src/bolt3/ppad-bolt3.haddock \
-                --read-interface=ppad-bolt4,$src/bolt4/ppad-bolt4.haddock \
-                --read-interface=ppad-bolt5,$src/bolt5/ppad-bolt5.haddock \
-                --read-interface=ppad-bolt7,$src/bolt7/ppad-bolt7.haddock \
-                --read-interface=ppad-bolt8,$src/bolt8/ppad-bolt8.haddock \
-                --read-interface=ppad-bolt9,$src/bolt9/ppad-bolt9.haddock \
-                --read-interface=ppad-eproc,$src/eproc/ppad-eproc.haddock \
-                --read-interface=ppad-censor,$src/censor/ppad-censor.haddock \
-                --read-interface=vestigia,$src/vestigia/vestigia.haddock \
-                --read-interface=ppad-lmdb,$src/lmdb/ppad-lmdb.haddock
+                --title=ppad ${interfaces}
+
+              mv $out/index.html $out/modules.html
+              cp ${landing} $out/index.html
             '';
 
             fixupPhase = ''
-              sed -i 's/href="ppad\-/href="/g' $out/index.html
-              sed -i 's/href="ppad\-/href="/g' $out/doc-index.html
-
               # rewrite nix store paths to relative paths for ppad-* deps
               for f in $(find $out -name "*.html"); do
                 sed -i 's|file:///nix/store/[^/]*/share/doc/ppad-\([a-z0-9-]*\)-[0-9][0-9.]*/html/|../\1/|g' "$f"
@@ -464,4 +406,3 @@
         }
       );
 }
-
