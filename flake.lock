@@ -1379,11 +1379,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795015739,
-        "narHash": "sha256-cVcEGsO3iqUDyCHvRBF1FQX1NfwfhGwIfgTj4tFtlv8=",
+        "lastModified": 1795279892,
+        "narHash": "sha256-Tse02DsgqzmfimaxxTA7NWgutKjAIzgtj1xqfOGkYsY=",
         "ref": "master",
-        "rev": "54f4590c1a175770b00dd559545999128d792e18",
-        "revCount": 82,
+        "rev": "bc537445a071caa18e21c54df31aa6be596504f4",
+        "revCount": 87,
         "type": "git",
         "url": "git://git.ppad.tech/vestigia.git"
       },
